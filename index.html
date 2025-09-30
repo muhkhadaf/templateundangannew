@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=414, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Undangan Pernikahan Dinda & Fahmi</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="styles.css" rel="stylesheet">
+</head>
+<body class="bg-wedding-blue font-poppins overflow-x-hidden">
+    <!-- Mobile Container -->
+    <div class="mobile-container">
+        <!-- Navigation Indicator - Hidden initially -->
+        <div class="nav-indicator" id="navIndicator" style="display: none;">
+            <div class="nav-dot active" onclick="scrollToSection(0)"></div>
+            <div class="nav-dot" onclick="scrollToSection(1)"></div>
+            <div class="nav-dot" onclick="scrollToSection(2)"></div>
+            <div class="nav-dot" onclick="scrollToSection(3)"></div>
+            <div class="nav-dot" onclick="scrollToSection(4)"></div>
+            <div class="nav-dot" onclick="scrollToSection(5)"></div>
+            <div class="nav-dot" onclick="scrollToSection(6)"></div>
+            <div class="nav-dot" onclick="scrollToSection(7)"></div>
+            <div class="nav-dot" onclick="scrollToSection(8)"></div>
+            <div class="nav-dot" onclick="scrollToSection(9)"></div>
+        </div>
+
+        <!-- Main Content -->
+        <main id="main-content">
+            
+            <!-- Opening Section -->
+            <section id="opening" class="section-snap relative">
+                <!-- Welcome Screen Content -->
+                <div class="section-content">
+                    <div class="flex flex-col items-center justify-center h-full text-center">
+                        <!-- Wedding Title -->
+                        <div class="mb-8">
+                            <p class="text-gray-700 text-sm mb-4 font-light">The Wedding Of</p>
+                            <h1 class="font-dancing font-bold text-4xl mb-2 text-yellow-600">Dinda</h1>
+                            <div class="text-yellow-600 text-2xl mb-2">&</div>
+                            <h1 class="font-dancing font-bold text-4xl mb-6 text-yellow-600">Fahmi</h1>
+                        </div>
+                        
+                        <!-- Guest Info -->
+                        <div class="bg-transparent rounded-lg p-4 mb-8">
+                            <p class="text-gray-800 text-sm font-semibold">Kepada Yth;</p>
+                <p class="text-gray-800 text-sm font-semibold">Bapak/Ibu/Saudara/i</p>
+                            <p class="text-yellow-400 font-bold text-lg mt-2">Nama Tamu</p>
+                        </div>
+                        
+                        <!-- Open Invitation Button -->
+                        <button id="openInvitationBtn" class="bg-yellow-600 hover:bg-yellow-700 text-gray-800 font-semibold py-3 px-8 rounded-full shadow-lg transform transition-all duration-300 hover:scale-105 animate-pulse">
+                            Buka Undangan
+                        </button>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- Greeting Section -->
+            <section id="greeting" class="section-snap">
+                <div class="section-content flex items-center">
+                    <div class="blur-container">
+                        <h2 class="font-dancing text-yellow-600 mb-1">Assalamu'alaikum Wr. Wb.</h2>
+                        <p class="text-gray-700 leading-relaxed mb-1">
+                            Dengan memohon rahmat dan ridho Allah SWT, kami bermaksud mengundang Bapak/Ibu/Saudara/i untuk menghadiri acara pernikahan kami.
+                        </p>
+                        <div class="bg-yellow-50 rounded-lg p-4 mb-4">
+                            <h3 class="font-dancing text-yellow-600 mb-2">Mempelai Wanita</h3>
+                            <h4 class="font-dancing text-gray-800 mb-1">Dinda Sari Putri</h4>
+                            <p class="text-sm text-gray-600">Putri dari Bapak Ahmad & Ibu Siti</p>
+                        </div>
+                        <div class="text-yellow-600 text-2xl mb-4">&</div>
+                        <div class="bg-blue-50 rounded-lg p-4">
+                            <h3 class="font-dancing text-blue-600 mb-2">Mempelai Pria</h3>
+                            <h4 class="font-dancing text-gray-800 mb-1">Fahmi Rizki Pratama</h4>
+                        <p class="text-sm text-gray-600">Putra dari Bapak Budi & Ibu Rina</p>
+                    </div>
+                </div>
+                </div>
+            </section>
+            
+            <!-- Quotes Section -->
+            <section id="quotes" class="section-snap">
+                <div class="section-content">
+                    <div class="blur-container">
+                        <h2 class="font-dancing text-yellow-600 mb-6 text-center">Kata Mutiara</h2>
+                        
+                        <div class="bg-transparent rounded-lg p-6 mb-4 text-center">
+                            <i class="fas fa-quote-left text-yellow-400 text-2xl mb-4"></i>
+                            <p class="text-gray-800 italic leading-relaxed mb-4 font-medium">
+                                "Dan di antara tanda-tanda kekuasaan-Nya ialah Dia menciptakan untukmu isteri-isteri dari jenismu sendiri, supaya kamu cenderung dan merasa tenteram kepadanya, dan dijadikan-Nya diantaramu rasa kasih dan sayang."
+                            </p>
+                            <p class="text-yellow-400 font-semibold">QS. Ar-Rum: 21</p>
+                        </div>
+                        
+                        <div class="bg-transparent rounded-lg p-6 text-center">
+                            <i class="fas fa-heart text-yellow-400 text-xl mb-4"></i>
+                            <p class="text-gray-800 italic leading-relaxed font-medium">
+                                "Cinta sejati bukanlah tentang menjadi tak terpisahkan. Ini tentang dua orang yang terpisah dan tidak ada yang berubah."
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- Mempelai Section -->
+            <section id="mempelai" class="section-snap">
+                <div class="section-content">
+                    <div class="blur-container">
+                        <h2 class="font-dancing text-yellow-600 mb-4 text-center text-xl">Kedua Mempelai</h2>
+                        
+                        <!-- Mempelai Wanita -->
+                        <div class="bg-transparent rounded-lg p-4 mb-3 text-center">
+                            <div class="w-16 h-16 bg-yellow-400 bg-opacity-20 rounded-full mx-auto mb-3 flex items-center justify-center">
+                                <i class="fas fa-user text-yellow-400 text-lg"></i>
+                            </div>
+                            <h3 class="font-dancing text-yellow-400 text-lg mb-1">Dinda Sari Putri</h3>
+                            <p class="text-xs text-yellow-400 mb-2">S.Kom</p>
+                            <p class="text-gray-800 text-sm mb-2 font-medium">Putri pertama dari:</p>
+                    <div class="space-y-0 text-gray-800 text-sm">
+                                <p class="font-semibold">Bapak Ahmad Suryanto</p>
+                                <p class="text-xs">&</p>
+                                <p class="font-semibold">Ibu Siti Nurhaliza</p>
+                            </div>
+                        </div>
+                        
+                        <div class="text-yellow-400 text-2xl text-center mb-3">
+                            <i class="fas fa-heart"></i>
+                        </div>
+                        
+                        <!-- Mempelai Pria -->
+                        <div class="bg-transparent rounded-lg p-4 text-center">
+                            <div class="w-16 h-16 bg-blue-400 bg-opacity-20 rounded-full mx-auto mb-3 flex items-center justify-center">
+                                <i class="fas fa-user text-blue-400 text-lg"></i>
+                            </div>
+                            <h3 class="font-dancing text-blue-400 text-lg mb-1">Fahmi Rizki Pratama</h3>
+                            <p class="text-xs text-blue-400 mb-2">S.T</p>
+                            <p class="text-gray-800 text-sm mb-2 font-medium">Putra kedua dari:</p>
+                    <div class="space-y-0 text-gray-800 text-sm">
+                                <p class="font-semibold">Bapak Budi Santoso</p>
+                                <p class="text-xs">&</p>
+                                <p class="font-semibold">Ibu Rina Marlina</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- Detail Akad Nikah Section -->
+            <section id="akad" class="section-snap">
+                <div class="section-content">
+                    <div class="blur-container">
+                        <h2 class="font-dancing text-yellow-600 mb-6 text-center">Akad Nikah</h2>
+                        
+                        <div class="bg-transparent rounded-lg p-6 text-center">
+                            <div class="mb-6">
+                                <i class="fas fa-mosque text-yellow-400 text-4xl mb-4"></i>
+                                <h3 class="font-dancing text-blue-400 text-xl mb-4">Ijab Kabul</h3>
+                            </div>
+                            
+                            <div class="space-y-4 text-gray-800">
+                                <div class="flex items-center justify-center">
+                                    <i class="fas fa-calendar-alt mr-3 text-yellow-400"></i>
+                                    <div>
+                                        <p class="font-semibold">Sabtu, 15 Juni 2024</p>
+                                        <p class="text-sm text-gray-300">15 Dzulhijjah 1445 H</p>
+                                    </div>
+                                </div>
+                                
+                                <div class="flex items-center justify-center">
+                                    <i class="fas fa-clock mr-3 text-yellow-400"></i>
+                                    <div>
+                                        <p class="font-semibold">08.00 - 10.00 WIB</p>
+                                        <p class="text-sm text-black-300">Pagi Hari</p>
+                                    </div>
+                                </div>
+                                
+                                <div class="flex items-center justify-center">
+                                    <i class="fas fa-map-marker-alt mr-3 text-yellow-400"></i>
+                                    <div>
+                                        <p class="font-semibold">Masjid Al-Ikhlas</p>
+                                        <p class="text-sm text-gray-300">Jl. Merdeka No. 123, Jakarta Pusat</p>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="mt-6 pt-4 border-t border-gray-400">
+                                <p class="text-sm text-black italic">
+                                    "Barakallahu lakuma wa baraka alaikuma wa jama'a bainakuma fi khair"
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- Resepsi Section -->
+            <section id="resepsi" class="section-snap">
+                <div class="section-content">
+                    <div class="blur-container">
+                        <h2 class="font-dancing text-yellow-600 mb-6 text-center">Resepsi Pernikahan</h2>
+                        
+                        <div class="bg-transparent rounded-lg p-6 text-center">
+                            <div class="mb-6">
+                                <i class="fas fa-glass-cheers text-yellow-400 text-4xl mb-4"></i>
+                                <h3 class="font-dancing text-blue-400 text-xl mb-4">Walimatul Ursy</h3>
+                            </div>
+                            
+                            <div class="space-y-4 text-gray-800">
+                                <div class="flex items-center justify-center">
+                                    <i class="fas fa-calendar-alt mr-3 text-yellow-400"></i>
+                                    <div>
+                                        <p class="font-semibold">Sabtu, 15 Juni 2024</p>
+                                        <p class="text-sm text-gray-300">15 Dzulhijjah 1445 H</p>
+                                    </div>
+                                </div>
+                                
+                                <div class="flex items-center justify-center">
+                                    <i class="fas fa-clock mr-3 text-yellow-400"></i>
+                                    <div>
+                                        <p class="font-semibold">11.00 - 15.00 WIB</p>
+                                        <p class="text-sm text-gray-300">Siang Hari</p>
+                                    </div>
+                                </div>
+                                
+                                <div class="flex items-center justify-center">
+                                    <i class="fas fa-building mr-3 text-yellow-400"></i>
+                                    <div>
+                                        <p class="font-semibold">Gedung Serbaguna Harmoni</p>
+                                        <p class="text-sm text-gray-300">Jl. Harmoni No. 456, Jakarta Pusat</p>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="mt-6 pt-4 border-t border-gray-400">
+                                <p class="text-sm text-gray-300">
+                                    Merupakan suatu kehormatan dan kebahagiaan bagi kami apabila Bapak/Ibu/Saudara/i berkenan hadir untuk memberikan doa restu kepada kedua mempelai.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- Map Resepsi Section -->
+            <section id="map" class="section-snap">
+                <div class="section-content">
+                    <div class="blur-container">
+                        <h2 class="font-dancing text-yellow-600 mb-6 text-center">Lokasi Resepsi</h2>
+                        
+                        <div class="bg-transparent rounded-lg p-6">
+                            <div class="text-center mb-4">
+                                <h3 class="font-semibold text-black mb-2">Gedung Serbaguna Harmoni</h3>
+                                <p class="text-sm text-black mb-4">Jl. Harmoni No. 456, Jakarta Pusat</p>
+                            </div>
+                            
+                            <!-- Map Placeholder -->
+                            <div class="bg-blue-400 bg-opacity-20 rounded-lg h-48 flex items-center justify-center mb-4">
+                                <div class="text-center">
+                                    <i class="fas fa-map-marked-alt text-blue-400 text-3xl mb-2"></i>
+                                    <p class="text-blue-400 text-sm">Peta Lokasi</p>
+                                </div>
+                            </div>
+                            
+                            <div class="space-y-3">
+                                <a href="https://maps.google.com/?q=Gedung+Serbaguna+Harmoni+Jakarta" target="_blank" class="block w-full bg-blue-500 text-black py-2 px-4 rounded-lg text-center font-semibold hover:bg-blue-600 transition-colors">
+                    <i class="fab fa-google mr-2"></i>Google Maps
+                </a>
+                
+                <a href="https://waze.com/ul?q=Gedung+Serbaguna+Harmoni+Jakarta" target="_blank" class="block w-full bg-purple-500 text-black py-2 px-4 rounded-lg text-center font-semibold hover:bg-purple-600 transition-colors">
+                                    <i class="fas fa-route mr-2"></i>
+                                    Buka di Waze
+                                </a>
+                            </div>
+                            
+                            <div class="mt-4 pt-4 border-t border-gray-400 text-center">
+                                <p class="text-xs text-black">
+                                    <i class="fas fa-info-circle mr-1"></i>
+                                    Parkir tersedia di area gedung
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- RSVP Section -->
+            <section id="rsvp" class="section-snap">
+                <div class="section-content">
+                    <div class="blur-container">
+                        <h2 class="font-dancing text-yellow-600 text-center mb-6">Konfirmasi Kehadiran</h2>
+                        
+                        <div class="bg-transparent rounded-lg p-4">
+                            <p class="text-gray-800 mb-4 text-sm">Mohon konfirmasi kehadiran Anda sebelum tanggal 10 Juni 2024</p>
+                            
+                            <form class="space-y-3">
+                                <input type="text" placeholder="Nama Lengkap" class="w-full p-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-yellow-400 text-sm">
+                                
+                                <select class="w-full p-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-yellow-400 text-sm">
+                                    <option value="">Konfirmasi Kehadiran</option>
+                                    <option value="hadir">Hadir</option>
+                                    <option value="tidak-hadir">Tidak Hadir</option>
+                                </select>
+                                
+                                <input type="number" placeholder="Jumlah Tamu" min="1" max="5" class="w-full p-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-yellow-400 text-sm">
+                                
+                                <button type="submit" class="w-full bg-blue-500 text-gray-800 py-2 rounded-lg font-semibold hover:bg-blue-600 transition-colors text-sm">
+                                    Konfirmasi
+                                </button>
+                            </form>
+                            
+                            <div class="mt-4 pt-4 border-t border-gray-400">
+                                <p class="text-xs text-gray-300 mb-3">Hubungi kami:</p>
+                                <div class="flex justify-center space-x-3">
+                                    <a href="tel:+6281234567890" class="bg-green-500 text-gray-800 px-3 py-1 rounded-lg text-xs">
+                                        <i class="fab fa-whatsapp mr-1"></i> WhatsApp
+                                    </a>
+                                    <a href="tel:+6281234567890" class="bg-blue-500 text-gray-800 px-3 py-1 rounded-lg text-xs">
+                                        <i class="fas fa-phone mr-1"></i> Telepon
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- Gift Section -->
+            <section id="gift" class="section-snap">
+                <div class="section-content">
+                    <div class="blur-container">
+                        <h2 class="font-dancing text-yellow-600 mb-4 text-center text-xl">Wedding Gift</h2>
+                        
+                        <div class="bg-transparent rounded-lg p-4 mb-3">
+                            <div class="text-center mb-4">
+                                <i class="fas fa-gift text-yellow-400 text-2xl mb-2"></i>
+                                <p class="text-gray-800 text-xs leading-relaxed">
+                                    Doa restu Anda merupakan karunia yang sangat berarti bagi kami. Dan jika memberi adalah ungkapan tanda kasih Anda, Anda dapat memberi kado secara cashless.
+                                </p>
+                            </div>
+                            
+                            <!-- Transfer Bank -->
+                            <div class="bg-blue-400 bg-opacity-20 rounded-lg p-3 mb-3">
+                                <h3 class="font-semibold text-gray-800 mb-2 text-center text-sm">
+                                    <i class="fas fa-university mr-1 text-blue-400"></i>
+                                    Transfer Bank
+                                </h3>
+                                <div class="space-y-2">
+                                    <div class="bg-blue-400 bg-opacity-10 rounded-lg p-2">
+                                        <div class="flex justify-between items-center">
+                                            <div>
+                                                <p class="font-semibold text-gray-800 text-sm">Bank BCA</p>
+                                                <p class="text-xs text-gray-300">a.n. Dinda Sari Putri</p>
+                                                <p class="font-mono text-sm font-bold text-blue-400">1234567890</p>
+                                            </div>
+                                            <button onclick="copyToClipboard('1234567890')" class="bg-blue-500 text-gray-800 px-2 py-1 rounded text-xs hover:bg-blue-600 transition-colors">
+                                                <i class="fas fa-copy"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="bg-blue-400 bg-opacity-10 rounded-lg p-2">
+                                        <div class="flex justify-between items-center">
+                                            <div>
+                                                <p class="font-semibold text-gray-800 text-sm">Bank Mandiri</p>
+                                                <p class="text-xs text-gray-300">a.n. Fahmi Rizki Pratama</p>
+                                                <p class="font-mono text-sm font-bold text-orange-400">0987654321</p>
+                                            </div>
+                                            <button onclick="copyToClipboard('0987654321')" class="bg-orange-500 text-gray-800 px-2 py-1 rounded text-xs hover:bg-orange-600 transition-colors">
+                                                <i class="fas fa-copy"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Alamat Fisik -->
+                            <div class="bg-yellow-400 bg-opacity-20 rounded-lg p-3">
+                                <h3 class="font-semibold text-gray-800 mb-2 text-center text-sm">
+                                    <i class="fas fa-home mr-1 text-yellow-400"></i>
+                                    Kirim Kado
+                                </h3>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- Penutup Section -->
+            <section id="penutup" class="section-snap">
+                <div class="section-content">
+                    <div class="blur-container">
+                        <h2 class="font-dancing text-yellow-600 mb-6 text-center">Terima Kasih</h2>
+                        
+                        <div class="bg-transparent rounded-lg p-6 text-center">
+                            <div class="mb-6">
+                                <i class="fas fa-heart text-yellow-400 text-4xl mb-4"></i>
+                                <h3 class="font-dancing text-blue-400 text-xl mb-4">Wassalamu'alaikum Wr. Wb.</h3>
+                            </div>
+                            
+                            <div class="space-y-4 text-gray-800">
+                                <p class="leading-relaxed">
+                                    Merupakan suatu kehormatan dan kebahagiaan bagi kami sekeluarga apabila Bapak/Ibu/Saudara/i berkenan hadir untuk memberikan doa restu kepada kedua mempelai.
+                                </p>
+                                
+                                <p class="leading-relaxed">
+                                    Atas kehadiran dan doa restu dari Bapak/Ibu/Saudara/i, kami sekeluarga mengucapkan terima kasih.
+                                </p>
+                            </div>
+                            
+                            <div class="mt-6 pt-4 border-t border-gray-400">
+                                <p class="text-yellow-400 font-dancing text-lg mb-2">Hormat Kami</p>
+                                <p class="font-semibold text-gray-800">Dinda & Fahmi</p>
+                                <p class="text-sm text-gray-300">Kedua Keluarga Besar</p>
+                            </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+        
+        <!-- Bottom Navigation - Hidden initially -->
+        <nav class="bottom-nav" id="bottomNav" style="display: none;">
+            <div class="nav-container">
+                <!-- Navigation Buttons -->
+                <button class="nav-btn active">
+                    <div class="nav-icon">
+                        <i class="fas fa-home"></i>
+                    </div>
+                    <span class="nav-label">Opening</span>
+                </button>
+                
+                <button class="nav-btn">
+                    <div class="nav-icon">
+                        <i class="fas fa-heart"></i>
+                    </div>
+                    <span class="nav-label">Greeting</span>
+                </button>
+                
+                <button class="nav-btn">
+                    <div class="nav-icon">
+                        <i class="fas fa-quote-left"></i>
+                    </div>
+                    <span class="nav-label">Quotes</span>
+                </button>
+                
+                <button class="nav-btn">
+                    <div class="nav-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <span class="nav-label">Mempelai</span>
+                </button>
+                
+                <button class="nav-btn">
+                    <div class="nav-icon">
+                        <i class="fas fa-ring"></i>
+                    </div>
+                    <span class="nav-label">Akad</span>
+                </button>
+                
+                <button class="nav-btn">
+                    <div class="nav-icon">
+                        <i class="fas fa-glass-cheers"></i>
+                    </div>
+                    <span class="nav-label">Resepsi</span>
+                </button>
+                
+                <button class="nav-btn">
+                    <div class="nav-icon">
+                        <i class="fas fa-map-marker-alt"></i>
+                    </div>
+                    <span class="nav-label">Map</span>
+                </button>
+                
+                <button class="nav-btn">
+                    <div class="nav-icon">
+                        <i class="fas fa-calendar-check"></i>
+                    </div>
+                    <span class="nav-label">RSVP</span>
+                </button>
+                
+                <button class="nav-btn">
+                    <div class="nav-icon">
+                        <i class="fas fa-gift"></i>
+                    </div>
+                    <span class="nav-label">Gift</span>
+                </button>
+                
+                <button class="nav-btn">
+                    <div class="nav-icon">
+                        <i class="fas fa-heart"></i>
+                    </div>
+                    <span class="nav-label">Penutup</span>
+                </button>
+            </div>
+        </nav>
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,1045 @@
+/* Font Imports */
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500;600;700&family=Poppins:wght@300;400;500;600&display=swap');
+
+/* Font Classes */
+.font-dancing { 
+    font-family: 'Dancing Script', cursive; 
+}
+
+.font-poppins { 
+    font-family: 'Poppins', sans-serif; 
+}
+
+/* Custom Animations */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes float {
+    0%, 100% { 
+        transform: translateY(0px); 
+    }
+    50% { 
+        transform: translateY(-10px); 
+    }
+}
+
+@keyframes navSlide {
+    from {
+        transform: translateX(-100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+@keyframes iconPulse {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.1);
+    }
+}
+
+/* Page-like Transition Animations */
+@keyframes pageSlideIn {
+    from {
+        opacity: 0;
+        transform: translateY(100vh) scale(0.8);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+@keyframes pageSlideOut {
+    from {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+    to {
+        opacity: 0;
+        transform: translateY(-100vh) scale(0.8);
+    }
+}
+
+@keyframes pageFadeIn {
+    from {
+        opacity: 0;
+        transform: scale(0.9) rotateX(15deg);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1) rotateX(0deg);
+    }
+}
+
+@keyframes blurContainerReveal {
+    from {
+        opacity: 0;
+        transform: scale(0.8) translateY(50px);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
+}
+
+/* Navigation animations */
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(100%);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes fadeOut {
+    from {
+        opacity: 1;
+        transform: scale(1);
+    }
+    to {
+        opacity: 0;
+        transform: scale(0.8);
+    }
+}
+
+/* Unique animations for each section */
+@keyframes openingSlideUp {
+    from {
+        opacity: 0;
+        transform: translateY(100px) scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+@keyframes greetingFadeRotate {
+    from {
+        opacity: 0;
+        transform: rotateY(-30deg) translateX(-50px);
+    }
+    to {
+        opacity: 1;
+        transform: rotateY(0deg) translateX(0);
+    }
+}
+
+@keyframes quotesZoomIn {
+    from {
+        opacity: 0;
+        transform: scale(0.5) rotateZ(5deg);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1) rotateZ(0deg);
+    }
+}
+
+@keyframes galleryFlipIn {
+    from {
+        opacity: 0;
+        transform: rotateX(90deg) translateY(-30px);
+    }
+    to {
+        opacity: 1;
+        transform: rotateX(0deg) translateY(0);
+    }
+}
+
+@keyframes messagesSlideLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-100px) skewX(10deg);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0) skewX(0deg);
+    }
+}
+
+@keyframes rsvpBounceIn {
+    from {
+        opacity: 0;
+        transform: translateY(-50px) scale(0.3);
+    }
+    50% {
+        opacity: 0.8;
+        transform: translateY(10px) scale(1.1);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+/* Decorative element animations */
+@keyframes floatUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px) rotate(0deg);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) rotate(360deg);
+    }
+}
+
+@keyframes slideInLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-50px) scale(0.8);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0) scale(1);
+    }
+}
+
+@keyframes slideInRight {
+    from {
+        opacity: 0;
+        transform: translateX(50px) scale(0.8);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0) scale(1);
+    }
+}
+
+@keyframes pulseGlow {
+    from {
+        opacity: 0;
+        transform: scale(0.8);
+        box-shadow: 0 0 0 rgba(255, 193, 7, 0);
+    }
+    50% {
+        opacity: 0.8;
+        transform: scale(1.05);
+        box-shadow: 0 0 20px rgba(255, 193, 7, 0.3);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+        box-shadow: 0 0 10px rgba(255, 193, 7, 0.1);
+    }
+}
+
+/* Animation Classes */
+.animate-fadeInUp {
+    animation: fadeInUp 0.8s ease-out;
+}
+
+.animate-float {
+    animation: float 3s ease-in-out infinite;
+}
+
+.animate-navSlide {
+    animation: navSlide 0.3s ease-in-out;
+}
+
+.animate-iconPulse {
+    animation: iconPulse 0.6s ease-in-out;
+}
+
+/* Base Styles */
+body {
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+    display: flex;
+    justify-content: center;
+    background-color: #f3f4f6;
+}
+
+/* Fixed background overlay - white and extended vertically */
+.mobile-container::before {
+    content: '';
+    position: fixed !important;
+    top: 46% !important; /* geser sedikit ke atas */
+    left: 50% !important;
+    transform: translate(-50%, -50%) !important;
+    width: 380px !important;
+    height: 750px !important;
+    background: rgba(255, 255, 255, 0.1) !important;
+    backdrop-filter: blur(15px) !important;
+    border: 3px solid #fbbf24 !important;
+    border-radius: 25px !important;
+    z-index: 0 !important;
+    pointer-events: none !important;
+    box-shadow: 0 8px 32px rgb(255, 255, 255) !important;
+    /* Ensure complete immobility */
+    will-change: auto !important;
+    backface-visibility: hidden !important;
+    transform-style: flat !important;
+    /* Prevent any movement or animation */
+    animation: none !important;
+    transition: none !important;
+    /* Opacity control */
+    opacity: var(--overlay-opacity, 0.8);
+}
+
+/* Forced mobile layout container */
+.mobile-container {
+    width: 100%;
+    max-width: 414px;
+    margin: 0 auto;
+    background-image: url('./back.jpg');
+    background-size: 30% 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    position: relative;
+    height: 100vh;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    scroll-snap-type: y mandatory;
+    scroll-behavior: smooth;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+
+/* Fixed section heights with scroll snap */
+.section-snap {
+    height: 100vh;
+    scroll-snap-align: start;
+    scroll-snap-stop: always;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    background: transparent; /* Background now handled by mobile-container */
+    z-index: 1; /* Ensure content is above fixed background */
+    opacity: 0;
+    transform: translateY(100vh) scale(0.8);
+    transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+/* Section animation states - unique for each section */
+.section-snap.section-visible {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+}
+
+.section-snap.section-active {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+}
+
+/* Remove exit animations - sections just hide instantly */
+.section-snap.section-hidden {
+    opacity: 0;
+    transform: translateY(0) scale(1);
+    transition: none;
+}
+
+/* Unique animations for each section */
+#opening.section-snap.section-visible .blur-container {
+    animation: openingSlideUp 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+}
+
+#opening.section-snap.section-visible h1 {
+    animation: pulseGlow 1.2s ease-out 0.3s forwards;
+    opacity: 0;
+}
+
+/* Removed bg-white animation as background is now transparent */
+
+#opening.section-snap.section-visible svg {
+    animation: floatUp 1s ease-out 0.9s forwards;
+    opacity: 0;
+}
+
+#greeting.section-snap.section-visible .blur-container {
+    animation: greetingFadeRotate 0.7s ease-out forwards;
+}
+
+#greeting.section-snap.section-visible h2 {
+    animation: slideInLeft 0.5s ease-out 0.2s forwards;
+    opacity: 0;
+}
+
+#greeting.section-snap.section-visible p {
+    animation: slideInRight 0.5s ease-out 0.4s forwards;
+    opacity: 0;
+}
+
+#greeting.section-snap.section-visible .bg-yellow-50 {
+    animation: slideInLeft 0.6s ease-out 0.6s forwards;
+    opacity: 0;
+}
+
+#greeting.section-snap.section-visible .bg-blue-50 {
+    animation: slideInRight 0.6s ease-out 0.8s forwards;
+    opacity: 0;
+}
+
+#quotes.section-snap.section-visible .blur-container {
+    animation: quotesZoomIn 0.6s ease-out forwards;
+}
+
+#quotes.section-snap.section-visible h2 {
+    animation: pulseGlow 0.8s ease-out 0.2s forwards;
+    opacity: 0;
+}
+
+/* Removed bg-white animations as backgrounds are now transparent */
+
+#gallery.section-snap.section-visible .blur-container {
+    animation: galleryFlipIn 0.8s ease-out forwards;
+}
+
+#gallery.section-snap.section-visible h2 {
+    animation: slideInLeft 0.6s ease-out 0.2s forwards;
+    opacity: 0;
+}
+
+#gallery.section-snap.section-visible .grid > div {
+    animation: floatUp 0.5s ease-out forwards;
+    opacity: 0;
+}
+
+#gallery.section-snap.section-visible .grid > div:nth-child(1) {
+    animation-delay: 0.4s;
+}
+
+#gallery.section-snap.section-visible .grid > div:nth-child(2) {
+    animation-delay: 0.5s;
+}
+
+#gallery.section-snap.section-visible .grid > div:nth-child(3) {
+    animation-delay: 0.6s;
+}
+
+#gallery.section-snap.section-visible .grid > div:nth-child(4) {
+    animation-delay: 0.7s;
+}
+
+#gallery.section-snap.section-visible .bg-gray-300:last-child {
+    animation: slideInLeft 0.6s ease-out 0.8s forwards;
+    opacity: 0;
+}
+
+#messages.section-snap.section-visible .blur-container {
+    animation: messagesSlideLeft 0.7s ease-out forwards;
+}
+
+#messages.section-snap.section-visible h2 {
+    animation: slideInRight 0.6s ease-out 0.2s forwards;
+    opacity: 0;
+}
+
+/* Removed bg-white animation for messages section */
+
+#rsvp.section-snap.section-visible .blur-container {
+    animation: rsvpBounceIn 0.9s ease-out forwards;
+}
+
+#rsvp.section-snap.section-visible h2 {
+    animation: pulseGlow 0.8s ease-out 0.2s forwards;
+    opacity: 0;
+}
+
+/* Removed bg-white animation for rsvp section */
+
+/* Additional detailed animations for specific elements */
+#opening.section-snap.section-visible .absolute:first-of-type {
+    animation: floatUp 1.2s ease-out 1.2s forwards;
+    opacity: 0;
+}
+
+#opening.section-snap.section-visible .absolute:last-of-type {
+    animation: floatUp 1.2s ease-out 1.4s forwards;
+    opacity: 0;
+}
+
+#greeting.section-snap.section-visible .text-yellow-600 {
+    animation: pulseGlow 0.8s ease-out 1s forwards;
+    opacity: 0;
+}
+
+#quotes.section-snap.section-visible .fas {
+    animation: floatUp 0.4s ease-out forwards;
+    opacity: 0;
+}
+
+/* Removed all bg-white animation delays for quotes section as backgrounds are now transparent */
+
+#messages.section-snap.section-visible input {
+    animation: slideInRight 0.5s ease-out 0.6s forwards;
+    opacity: 0;
+}
+
+#messages.section-snap.section-visible textarea {
+    animation: slideInLeft 0.5s ease-out 0.8s forwards;
+    opacity: 0;
+}
+
+#messages.section-snap.section-visible button {
+    animation: rsvpBounceIn 0.6s ease-out 1s forwards;
+    opacity: 0;
+}
+
+/* Staggered animation for form elements */
+#rsvp.section-snap.section-visible input:nth-of-type(1) {
+    animation: slideInRight 0.5s ease-out 0.6s forwards;
+    opacity: 0;
+}
+
+#rsvp.section-snap.section-visible input:nth-of-type(2) {
+    animation: slideInLeft 0.5s ease-out 0.8s forwards;
+    opacity: 0;
+}
+
+#rsvp.section-snap.section-visible select {
+    animation: quotesZoomIn 0.5s ease-out 1s forwards;
+    opacity: 0;
+}
+
+#rsvp.section-snap.section-visible button {
+    animation: pulseGlow 0.8s ease-out 1.2s forwards;
+    opacity: 0;
+}
+
+/* Background is now fixed on mobile-container for all devices */
+
+/* Background overlay for better text readability */
+.section-snap::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(255, 255, 255, 0.1);
+    z-index: 1;
+}
+
+
+
+/* Custom gradient backgrounds */
+.bg-wedding-blue {
+    background: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 50%, #90caf9 100%);
+}
+
+.bg-wedding-gold {
+    background: linear-gradient(135deg, #ffd700 0%, #ffb300 50%, #ff8f00 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+/* Ornament styles */
+.ornament {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath d='M50 10 L60 30 L80 30 L65 45 L70 65 L50 55 L30 65 L35 45 L20 30 L40 30 Z' fill='%23ffd700' opacity='0.3'/%3E%3C/svg%3E");
+    background-size: 20px 20px;
+    background-repeat: no-repeat;
+}
+
+/* Hide scrollbar but keep functionality */
+.mobile-container::-webkit-scrollbar {
+    display: none;
+}
+
+.mobile-container {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+/* Section content centering */
+.section-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 1.5rem 1rem 1rem;
+    height: 100vh;
+    max-height: 100vh;
+    overflow: hidden;
+    box-sizing: border-box;
+    position: relative;
+    z-index: 2;
+}
+
+/* Blur container for content - now transparent, using only fixed background */
+.blur-container {
+    background: transparent;
+    border: none;
+    border-radius: 0;
+    padding: 1.5rem;
+    width: 90%;
+    max-width: 400px;
+    min-height: 70vh;
+    margin-top: 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    box-shadow: none;
+    position: relative;
+    overflow: hidden;
+    opacity: 0;
+    transform: scale(0.8) translateY(50px);
+    transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+/* Blur container animation states */
+.blur-container.container-visible {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+}
+
+.blur-container.container-animate {
+    animation: blurContainerReveal 0.8s ease-out forwards;
+}
+
+/* Fallback removed - blur-container is now fully transparent */
+
+/* Responsive content sizing within blur container */
+.blur-container > * {
+    max-width: 100%;
+    flex-shrink: 1;
+    text-align: center;
+}
+
+.blur-container h1 {
+    font-size: clamp(1.8rem, 7vw, 2.5rem);
+    line-height: 1.2;
+    margin-bottom: 1rem;
+}
+
+.blur-container h2 {
+    font-size: clamp(1.4rem, 5.5vw, 2rem);
+    line-height: 1.3;
+    margin-bottom: 0.8rem;
+}
+
+.blur-container h3 {
+    font-size: clamp(1.2rem, 4.5vw, 1.8rem);
+    line-height: 1.4;
+    margin-bottom: 0.6rem;
+}
+
+.blur-container p {
+    font-size: clamp(0.8rem, 3vw, 0.95rem);
+    line-height: 1.5;
+    margin-bottom: 0.5rem;
+}
+
+/* Ensure form elements fit within blur container */
+.blur-container form {
+    width: 100%;
+    max-width: 300px;
+}
+
+/* Specific styling for mempelai section */
+#mempelai .blur-container {
+    padding: 1rem;
+    min-height: 60vh;
+}
+
+#mempelai .blur-container h2 {
+    font-size: clamp(1.2rem, 5vw, 1.6rem);
+    margin-bottom: 1rem;
+}
+
+#mempelai .blur-container h3 {
+    font-size: clamp(1rem, 4vw, 1.3rem);
+    line-height: 1.3;
+}
+
+#mempelai .blur-container p {
+    font-size: clamp(0.75rem, 2.8vw, 0.9rem);
+    line-height: 1.4;
+}
+
+/* Specific styling for gift section */
+#gift .blur-container {
+    padding: 1rem;
+    min-height: 65vh;
+}
+
+#gift .blur-container h2 {
+    font-size: clamp(1.2rem, 5vw, 1.6rem);
+    margin-bottom: 1rem;
+}
+
+#gift .blur-container h3 {
+    font-size: clamp(0.9rem, 3.5vw, 1.1rem);
+    line-height: 1.3;
+}
+
+#gift .blur-container p {
+    font-size: clamp(0.7rem, 2.5vw, 0.85rem);
+    line-height: 1.4;
+}
+
+/* Removed bg-white styling for gift section */
+
+#gift .blur-container button {
+    font-size: clamp(0.65rem, 2.2vw, 0.75rem);
+    padding: 0.25rem 0.5rem;
+}
+
+/* Responsive card sizing for gift section */
+#gift .bg-blue-50,
+#gift .bg-yellow-50 {
+    border-radius: 0.5rem;
+    margin-bottom: 0.75rem;
+}
+
+/* Removed bg-white styling and shadow for gift section */
+
+/* Optimize spacing between elements in gift section */
+#gift .space-y-2 > * + * {
+    margin-top: 0.5rem;
+}
+
+/* Ensure proper alignment for bank info */
+#gift .flex.justify-between {
+    align-items: flex-start;
+    gap: 0.5rem;
+}
+
+#gift .font-mono {
+    letter-spacing: 0.05em;
+    word-break: break-all;
+}
+
+.blur-container input,
+.blur-container textarea,
+.blur-container select {
+    font-size: clamp(0.8rem, 3vw, 0.9rem);
+}
+
+/* Content spacing within blur container */
+.blur-container > *:last-child {
+    margin-bottom: 0;
+}
+
+/* Navigation indicator */
+.nav-indicator {
+    position: fixed;
+    right: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 40;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+@media (min-width: 415px) {
+    .nav-indicator {
+        right: calc(50% - 207px + 1rem);
+    }
+}
+
+.nav-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.5);
+    transition: all 0.3s ease-in-out;
+    cursor: pointer;
+}
+
+.nav-dot:hover {
+    background-color: rgba(251, 191, 36, 0.7);
+    transform: scale(1.2);
+}
+
+.nav-dot.active {
+    background-color: #fbbf24;
+    transform: scale(1.5);
+}
+
+/* Bottom Navigation Styles */
+.bottom-nav {
+    position: fixed;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+    max-width: 414px;
+    background: rgb(255, 255, 255);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.1);
+    border-radius: 24px 24px 0 0;
+    z-index: 50;
+    padding: 0.75rem 1rem 1rem;
+    transition: all 0.3s ease-in-out;
+}
+
+.nav-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+    overflow-x: auto;
+    overflow-y: hidden;
+    scroll-behavior: smooth;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    padding: 0 0.5rem;
+    gap: 0.5rem;
+    scroll-snap-type: x proximity;
+}
+
+.nav-container::-webkit-scrollbar {
+    display: none;
+}
+
+
+
+/* Professional Navigation Button Styles */
+.nav-btn {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0.75rem 0.5rem;
+    border-radius: 12px;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    cursor: pointer;
+    min-width: 60px;
+    width: 60px;
+    flex-shrink: 0;
+    background: transparent;
+    border: none;
+    scroll-snap-align: center;
+}
+
+.nav-icon {
+    width: 36px;
+    height: 36px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 0.375rem;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    background: transparent;
+}
+
+.nav-icon i {
+    font-size: 1rem;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Inactive state - gray and dimmed */
+.nav-btn:not(.active) .nav-icon i {
+    color: #9ca3af;
+    opacity: 0.6;
+}
+
+.nav-btn:not(.active) .nav-label {
+    color: #9ca3af;
+    opacity: 0.6;
+}
+
+/* Active state - bright yellow */
+.nav-btn.active .nav-icon {
+    background: rgba(251, 191, 36, 0.1);
+}
+
+.nav-btn.active .nav-icon i {
+    color: #fbbf24;
+    opacity: 1;
+}
+
+.nav-btn.active .nav-label {
+    color: #fbbf24;
+    font-weight: 600;
+    opacity: 1;
+}
+
+.nav-label {
+    font-size: 0.7rem;
+    font-weight: 500;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    text-align: center;
+    line-height: 1.2;
+}
+
+/* Responsive adjustments */
+@media (max-width: 320px) {
+    .nav-btn {
+        min-width: 50px;
+        width: 50px;
+        padding: 0.375rem;
+    }
+    
+    .nav-icon {
+        width: 32px;
+        height: 32px;
+    }
+    
+    .nav-icon i {
+        font-size: 0.75rem;
+    }
+    
+    .nav-label {
+        font-size: 0.625rem;
+    }
+    
+
+    
+    .nav-container {
+        gap: 0.25rem;
+    }
+}
+
+/* Removed desktop styling to maintain full-width mobile layout */
+
+/* Form Styles */
+input, textarea, select {
+    transition: all 0.3s ease-in-out;
+}
+
+input:focus, textarea:focus, select:focus {
+    outline: none;
+    ring: 2px;
+    ring-color: #fbbf24;
+    border-color: #fbbf24;
+    box-shadow: 0 0 0 3px rgba(251, 191, 36, 0.1);
+}
+
+button {
+    transition: all 0.3s ease-in-out;
+}
+
+button:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+button:active {
+    transform: translateY(0);
+}
+
+/* Loading Animation */
+.loading {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    border: 3px solid rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    border-top-color: #fff;
+    animation: spin 1s ease-in-out infinite;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* Decorative Elements */
+.decorative-element {
+    position: absolute;
+    pointer-events: none;
+    opacity: 0.6;
+    transition: all 0.3s ease-in-out;
+}
+
+.decorative-element:hover {
+    opacity: 0.8;
+    transform: scale(1.05);
+}
+
+/* Smooth transitions for all interactive elements */
+* {
+    transition: color 0.3s ease-in-out, background-color 0.3s ease-in-out, border-color 0.3s ease-in-out, transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+/* Forced Mobile Layout - Override all responsive breakpoints */
+@media (min-width: 415px) {
+    body {
+        background-color: #f3f4f6;
+        display: flex;
+        justify-content: center;
+        align-items: flex-start;
+        min-height: 100vh;
+    }
+    
+    .mobile-container {
+        max-width: 414px !important;
+        width: 414px !important;
+        margin: 0 auto;
+        box-shadow: 0 0 30px rgba(0, 0, 0, 0.15);
+        border-radius: 0;
+    }
+    
+    .bottom-nav {
+        max-width: 414px !important;
+        left: 50% !important;
+        transform: translateX(-50%) !important;
+    }
+}
+
+@media (min-width: 768px) {
+    body {
+        padding: 20px 0;
+    }
+    
+    .mobile-container {
+        border-radius: 12px;
+        overflow: hidden;
+    }
+}
+
+@media (min-width: 1024px) {
+    body {
+        padding: 40px 0;
+    }
+}
+
+/* Enhanced Scroll Snap Behavior */
+.mobile-container {
+    scroll-padding-top: 0;
+    scroll-snap-type: y mandatory;
+}
+
+.section-snap {
+    scroll-snap-align: start;
+    scroll-snap-stop: always;
+}
+
+/* Smooth scrolling enhancement */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Prevent momentum scrolling on iOS */
+.mobile-container {
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior-y: contain;
+}
