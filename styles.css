@@ -10,6 +10,56 @@
     font-family: 'Poppins', sans-serif; 
 }
 
+/* Flower Ornaments */
+.flower-ornament {
+    position: absolute;
+    top: -40px;
+    z-index: 10;
+    pointer-events: none;
+}
+
+.flower-top-left {
+    left: -40px;
+    animation: flowerEntranceLeft 1.5s ease-out forwards, 
+               flowerGentleFloat 4s ease-in-out infinite 1.5s;
+}
+
+.flower-top-right {
+    right: -40px;
+    animation: flowerEntranceRight 1.5s ease-out forwards, 
+               flowerGentleSway 5s ease-in-out infinite 1.5s;
+}
+
+.flower-img {
+    width: 500px;
+    height: 500px;
+    opacity: 1;
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
+    transition: all 0.3s ease;
+}
+
+/* Bottom Flower Ornaments */
+.flower-bottom-left {
+    bottom: -100px;
+    left: -40px;
+    transform: translateY(20px);
+    animation: flowerEntranceLeft 1.5s ease-out forwards, 
+               flowerGentleFloat 4s ease-in-out infinite 1.5s;
+}
+
+.flower-bottom-right {
+    bottom: -50px;
+    right: -40px;
+    transform: translateY(20px);
+    animation: flowerEntranceRight 1.5s ease-out forwards, 
+               flowerGentleSway 4s ease-in-out infinite 1.5s;
+}
+
+.flower-offset-bottom {
+    transform: translateY(700px) !important;
+    animation: flowerBottomGentleFloat 3s ease-in-out infinite;
+}
+
 /* Custom Animations */
 @keyframes fadeInUp {
     from {
@@ -22,16 +72,77 @@
     }
 }
 
-@keyframes float {
-    0%, 100% { 
-        transform: translateY(0px); 
+/* Removed float animation to eliminate excessive up-down movement */
+
+/* Flower Ornament Animations */
+@keyframes flowerEntranceLeft {
+    0% {
+        opacity: 0;
+        transform: translateX(-30px) translateY(-20px) rotate(-15deg) scale(0.3);
     }
-    50% { 
-        transform: translateY(-10px); 
+    50% {
+        opacity: 0.6;
+        transform: translateX(-10px) translateY(-5px) rotate(-5deg) scale(0.8);
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(0) translateY(0) rotate(0deg) scale(1);
     }
 }
 
+@keyframes flowerEntranceRight {
+    0% {
+        opacity: 0;
+        transform: translateX(30px) translateY(-20px) rotate(15deg) scale(0.3);
+    }
+    50% {
+        opacity: 0.6;
+        transform: translateX(10px) translateY(-5px) rotate(5deg) scale(0.8);
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(0) translateY(0) rotate(0deg) scale(1);
+    }
+}
 
+@keyframes flowerGentleFloat {
+    0%, 100% {
+        transform: translateY(0px) rotate(0deg);
+    }
+    25% {
+        transform: translateY(-3px) rotate(1deg);
+    }
+    50% {
+        transform: translateY(-5px) rotate(0deg);
+    }
+    75% {
+        transform: translateY(-2px) rotate(-1deg);
+    }
+}
+
+@keyframes flowerGentleSway {
+    0%, 100% {
+        transform: translateX(0px) rotate(0deg);
+    }
+    25% {
+        transform: translateX(2px) rotate(1deg);
+    }
+    50% {
+        transform: translateX(0px) rotate(0deg);
+    }
+    75% {
+        transform: translateX(-2px) rotate(-1deg);
+    }
+}
+
+@keyframes flowerBottomGentleFloat {
+    0%, 100% {
+        transform: translateY(0px);
+    }
+    50% {
+        transform: translateY(10px);
+    }
+}
 
 @keyframes iconPulse {
     0%, 100% {
@@ -156,32 +267,9 @@
     }
 }
 
-@keyframes rsvpBounceIn {
-    from {
-        opacity: 0;
-        transform: translateY(-50px) scale(0.3);
-    }
-    50% {
-        opacity: 0.8;
-        transform: translateY(10px) scale(1.1);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0) scale(1);
-    }
-}
+/* Removed rsvpBounceIn animation to eliminate bouncing effects */
 
-/* Decorative element animations */
-@keyframes floatUp {
-    from {
-        opacity: 0;
-        transform: translateY(30px) rotate(0deg);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0) rotate(360deg);
-    }
-}
+/* Removed floatUp animation to eliminate excessive movement and rotation */
 
 @keyframes slideInLeft {
     from {
@@ -229,7 +317,7 @@
 }
 
 .animate-float {
-    animation: float 3s ease-in-out infinite;
+    /* Removed float animation - using AOS instead */
 }
 
 
@@ -248,15 +336,16 @@ body {
     background-color: #f3f4f6;
 }
 
-/* Fixed background overlay - white and extended vertically */
+/* Fixed background overlay - DISABLED */
+/*
 .mobile-container::before {
     content: '';
     position: fixed !important;
-    top: 46% !important; /* geser sedikit ke atas */
+    top: 50% !important;
     left: 50% !important;
     transform: translate(-50%, -50%) !important;
     width: 380px !important;
-    height: 750px !important;
+    height: calc(100vh - 40px) !important;
     background: rgba(255, 255, 255, 0.1) !important;
     backdrop-filter: blur(15px) !important;
     border: 3px solid #fbbf24 !important;
@@ -264,22 +353,73 @@ body {
     z-index: 0 !important;
     pointer-events: none !important;
     box-shadow: 0 8px 32px rgb(255, 255, 255) !important;
-    /* Ensure complete immobility */
     will-change: auto !important;
     backface-visibility: hidden !important;
     transform-style: flat !important;
-    /* Prevent any movement or animation */
     animation: none !important;
     transition: none !important;
-    /* Opacity control */
     opacity: var(--overlay-opacity, 0.8);
+    margin-top: 20px !important;
+    margin-bottom: 20px !important;
+    /* OVERLAY DISABLED */
+    
+
+/* Responsive overlay adjustments for different mobile screen sizes with proper margins */
+@media (max-width: 320px) {
+    .mobile-container::before {
+        width: 280px !important; /* Adjusted for very small screens */
+        height: calc(100vh - 60px) !important; /* More margin for very small screens */
+        top: 50% !important; /* Centered positioning */
+        margin-top: 30px !important; /* Increased top margin for very small screens */
+        margin-bottom: 30px !important; /* Increased bottom margin for very small screens */
+    }
+}
+
+@media (min-width: 321px) and (max-width: 374px) {
+    .mobile-container::before {
+        width: 320px !important; /* Adjusted for small screens */
+        height: calc(100vh - 50px) !important; /* Proper margin calculation */
+        top: 50% !important; /* Centered positioning */
+        margin-top: 25px !important; /* Top margin for small screens */
+        margin-bottom: 25px !important; /* Bottom margin for small screens */
+    }
+}
+
+@media (min-width: 375px) and (max-width: 414px) {
+    .mobile-container::before {
+        width: 350px !important; /* Adjusted for medium screens */
+        height: calc(100vh - 45px) !important; /* Proper margin calculation */
+        top: 50% !important; /* Centered positioning */
+        margin-top: 22px !important; /* Top margin for medium screens */
+        margin-bottom: 23px !important; /* Bottom margin for medium screens */
+    }
+}
+
+@media (min-width: 415px) and (max-width: 480px) {
+    .mobile-container::before {
+        width: 380px !important; /* Standard width for larger mobile screens */
+        height: calc(100vh - 40px) !important; /* Standard margin calculation */
+        top: 50% !important; /* Centered positioning */
+        margin-top: 20px !important; /* Standard top margin */
+        margin-bottom: 20px !important; /* Standard bottom margin */
+    }
+}
+
+@media (min-width: 481px) and (max-width: 768px) {
+    .mobile-container::before {
+        width: 420px !important; /* Width for tablet-like screens */
+        height: calc(100vh - 35px) !important; /* Margin calculation for tablets */
+        top: 50% !important; /* Centered positioning */
+        margin-top: 17px !important; /* Top margin for tablet screens */
+        margin-bottom: 18px !important; /* Bottom margin for tablet screens */
+    }
 }
 
 /* Responsive mobile layout container */
 .mobile-container {
     width: 100%;
     margin: 0 auto;
-    background-image: url('./back.jpg');
+    background-image: url('./back.png');
     background-size: 100% 100%;
     background-position: center;
     background-repeat: no-repeat;
@@ -288,12 +428,15 @@ body {
     position: relative;
     min-height: 100vh;
     height: 100vh;
-    overflow-y: scroll;
+    overflow: hidden;
     overflow-x: hidden;
-    scroll-snap-type: y mandatory;
-    scroll-behavior: smooth;
+    overflow-y: hidden;
+    scroll-snap-type: none;
+    scroll-behavior: auto;
     scrollbar-width: none;
     -ms-overflow-style: none;
+    touch-action: pan-y;
+    -webkit-overflow-scrolling: touch;
 }
 
 /* Fixed section heights with scroll snap */
@@ -334,172 +477,209 @@ body {
     transition: none;
 }
 
-/* Unique animations for each section */
+/* Unique animations for each section - DISABLED */
 #opening.section-snap.section-visible .blur-container {
-    animation: openingSlideUp 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+    /* animation: openingSlideUp 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards; */
+    animation: none;
+    opacity: 1;
+    transform: none;
 }
 
 #opening.section-snap.section-visible h1 {
-    animation: pulseGlow 1.2s ease-out 0.3s forwards;
-    opacity: 0;
+    /* animation: pulseGlow 1.2s ease-out 0.3s forwards; */
+    animation: none;
+    opacity: 1; /* Always visible */
 }
 
 /* Removed bg-white animation as background is now transparent */
 
 #opening.section-snap.section-visible svg {
-    animation: floatUp 1s ease-out 0.9s forwards;
-    opacity: 0;
+    /* Removed floatUp animation - using AOS instead */
+    opacity: 1;
 }
 
 #greeting.section-snap.section-visible .blur-container {
-    animation: greetingFadeRotate 0.7s ease-out forwards;
+    /* animation: greetingFadeRotate 0.7s ease-out forwards; */
+    animation: none;
+    opacity: 1;
+    transform: none;
 }
 
 #greeting.section-snap.section-visible h2 {
-    animation: slideInLeft 0.5s ease-out 0.2s forwards;
-    opacity: 0;
+    /* animation: slideInLeft 0.5s ease-out 0.2s forwards; */
+    animation: none;
+    opacity: 1; /* Always visible */
 }
 
 #greeting.section-snap.section-visible p {
-    animation: slideInRight 0.5s ease-out 0.4s forwards;
-    opacity: 0;
+    /* animation: slideInRight 0.5s ease-out 0.4s forwards; */
+    animation: none;
+    opacity: 1; /* Always visible */
 }
 
 #greeting.section-snap.section-visible .bg-yellow-50 {
-    animation: slideInLeft 0.6s ease-out 0.6s forwards;
-    opacity: 0;
+    /* animation: slideInLeft 0.6s ease-out 0.6s forwards; */
+    animation: none;
+    opacity: 1; /* Always visible */
 }
 
 #greeting.section-snap.section-visible .bg-blue-50 {
-    animation: slideInRight 0.6s ease-out 0.8s forwards;
-    opacity: 0;
+    /* animation: slideInRight 0.6s ease-out 0.8s forwards; */
+    animation: none;
+    opacity: 1; /* Always visible */
 }
 
 #quotes.section-snap.section-visible .blur-container {
-    animation: quotesZoomIn 0.6s ease-out forwards;
+    /* animation: quotesZoomIn 0.6s ease-out forwards; */
+    animation: none;
+    opacity: 1;
+    transform: none;
 }
 
 #quotes.section-snap.section-visible h2 {
-    animation: pulseGlow 0.8s ease-out 0.2s forwards;
-    opacity: 0;
+    /* animation: pulseGlow 0.8s ease-out 0.2s forwards; */
+    animation: none;
+    opacity: 1; /* Always visible */
 }
 
 /* Removed bg-white animations as backgrounds are now transparent */
 
 #gallery.section-snap.section-visible .blur-container {
-    animation: galleryFlipIn 0.8s ease-out forwards;
+    /* animation: galleryFlipIn 0.8s ease-out forwards; */
+    animation: none;
+    opacity: 1;
+    transform: none;
 }
 
 #gallery.section-snap.section-visible h2 {
-    animation: slideInLeft 0.6s ease-out 0.2s forwards;
-    opacity: 0;
+    /* animation: slideInLeft 0.6s ease-out 0.2s forwards; */
+    animation: none;
+    opacity: 1; /* Always visible */
 }
 
 #gallery.section-snap.section-visible .grid > div {
-    animation: floatUp 0.5s ease-out forwards;
-    opacity: 0;
+    /* Removed floatUp animation - using AOS instead */
+    opacity: 1;
+    animation: none; /* No animations */
 }
 
 #gallery.section-snap.section-visible .grid > div:nth-child(1) {
-    animation-delay: 0.4s;
+    /* animation-delay: 0.4s; */
+    animation: none;
 }
 
 #gallery.section-snap.section-visible .grid > div:nth-child(2) {
-    animation-delay: 0.5s;
+    /* animation-delay: 0.5s; */
+    animation: none;
 }
 
 #gallery.section-snap.section-visible .grid > div:nth-child(3) {
-    animation-delay: 0.6s;
+    /* animation-delay: 0.6s; */
+    animation: none;
 }
 
 #gallery.section-snap.section-visible .grid > div:nth-child(4) {
-    animation-delay: 0.7s;
+    /* animation-delay: 0.7s; */
+    animation: none;
 }
 
 #gallery.section-snap.section-visible .bg-gray-300:last-child {
-    animation: slideInLeft 0.6s ease-out 0.8s forwards;
-    opacity: 0;
+    /* animation: slideInLeft 0.6s ease-out 0.8s forwards; */
+    animation: none;
+    opacity: 1; /* Always visible */
 }
 
 #messages.section-snap.section-visible .blur-container {
-    animation: messagesSlideLeft 0.7s ease-out forwards;
+    /* animation: messagesSlideLeft 0.7s ease-out forwards; */
+    animation: none;
+    opacity: 1;
+    transform: none;
 }
 
 #messages.section-snap.section-visible h2 {
-    animation: slideInRight 0.6s ease-out 0.2s forwards;
-    opacity: 0;
+    /* animation: slideInRight 0.6s ease-out 0.2s forwards; */
+    animation: none;
+    opacity: 1; /* Always visible */
 }
 
 /* Removed bg-white animation for messages section */
 
 #rsvp.section-snap.section-visible .blur-container {
-    animation: rsvpBounceIn 0.9s ease-out forwards;
+    /* Removed rsvpBounceIn animation - using AOS instead */
 }
 
 #rsvp.section-snap.section-visible h2 {
-    animation: pulseGlow 0.8s ease-out 0.2s forwards;
-    opacity: 0;
+    /* animation: pulseGlow 0.8s ease-out 0.2s forwards; */
+    animation: none;
+    opacity: 1; /* Always visible */
 }
 
 /* Removed bg-white animation for rsvp section */
 
 /* Additional detailed animations for specific elements */
 #opening.section-snap.section-visible .absolute:first-of-type {
-    animation: floatUp 1.2s ease-out 1.2s forwards;
-    opacity: 0;
+    /* Removed floatUp animation - using AOS instead */
+    opacity: 1;
 }
 
 #opening.section-snap.section-visible .absolute:last-of-type {
-    animation: floatUp 1.2s ease-out 1.4s forwards;
-    opacity: 0;
+    /* Removed floatUp animation - using AOS instead */
+    opacity: 1;
 }
 
 #greeting.section-snap.section-visible .text-yellow-600 {
-    animation: pulseGlow 0.8s ease-out 1s forwards;
-    opacity: 0;
+    /* animation: pulseGlow 0.8s ease-out 1s forwards; */
+    animation: none;
+    opacity: 1; /* Always visible */
 }
 
 #quotes.section-snap.section-visible .fas {
-    animation: floatUp 0.4s ease-out forwards;
-    opacity: 0;
+    /* Removed floatUp animation - using AOS instead */
+    opacity: 1;
 }
 
 /* Removed all bg-white animation delays for quotes section as backgrounds are now transparent */
 
 #messages.section-snap.section-visible input {
-    animation: slideInRight 0.5s ease-out 0.6s forwards;
-    opacity: 0;
+    /* animation: slideInRight 0.5s ease-out 0.6s forwards; */
+    animation: none;
+    opacity: 1; /* Always visible */
 }
 
 #messages.section-snap.section-visible textarea {
-    animation: slideInLeft 0.5s ease-out 0.8s forwards;
-    opacity: 0;
+    /* animation: slideInLeft 0.5s ease-out 0.8s forwards; */
+    animation: none;
+    opacity: 1; /* Always visible */
 }
 
 #messages.section-snap.section-visible button {
-    animation: rsvpBounceIn 0.6s ease-out 1s forwards;
-    opacity: 0;
+    /* Removed rsvpBounceIn animation - using AOS instead */
+    opacity: 1;
 }
 
-/* Staggered animation for form elements */
+/* Removed staggered animation for form elements */
 #rsvp.section-snap.section-visible input:nth-of-type(1) {
-    animation: slideInRight 0.5s ease-out 0.6s forwards;
-    opacity: 0;
+    /* animation: slideInRight 0.5s ease-out 0.6s forwards; */
+    animation: none;
+    opacity: 1; /* Always visible */
 }
 
 #rsvp.section-snap.section-visible input:nth-of-type(2) {
-    animation: slideInLeft 0.5s ease-out 0.8s forwards;
-    opacity: 0;
+    /* animation: slideInLeft 0.5s ease-out 0.8s forwards; */
+    animation: none;
+    opacity: 1; /* Always visible */
 }
 
 #rsvp.section-snap.section-visible select {
-    animation: quotesZoomIn 0.5s ease-out 1s forwards;
-    opacity: 0;
+    /* animation: quotesZoomIn 0.5s ease-out 1s forwards; */
+    animation: none;
+    opacity: 1; /* Always visible */
 }
 
 #rsvp.section-snap.section-visible button {
-    animation: pulseGlow 0.8s ease-out 1.2s forwards;
-    opacity: 0;
+    /* animation: pulseGlow 0.8s ease-out 1.2s forwards; */
+    animation: none;
+    opacity: 1; /* Always visible */
 }
 
 /* Background is now fixed on mobile-container for all devices */
@@ -547,60 +727,148 @@ body {
     scrollbar-width: none;
 }
 
-/* Section content centering */
+/* Section content positioning - adjusted for container margins */
 .section-content {
     flex: 1;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
     padding: 0;
-    height: 100vh;
-    max-height: 100vh;
+    padding-top: 40px; /* Adjusted for container margins */
+    padding-bottom: 100px; /* Adjusted for bottom navigation */
+    height: calc(100vh - 40px); /* Account for 20px top and bottom margins */
+    max-height: calc(100vh - 40px);
     width: 100%;
     max-width: 100%;
     overflow: hidden;
     overflow-x: hidden;
-    overflow-y: hidden;
+    overflow-y: hidden; /* No internal scrolling - content must fit */
     box-sizing: border-box;
     position: relative;
     z-index: 2;
+    margin-top: 20px; /* Top margin for content spacing */
+    margin-bottom: 20px; /* Bottom margin for content spacing */
 }
 
-/* Blur container for content - now transparent, using only fixed background */
+/* Responsive adjustments for very small screens with container margins */
+@media (max-width: 320px) {
+    .section-content {
+        padding-top: 30px; /* Adjusted for container margins */
+        padding-bottom: 80px; /* Adjusted for very small screens */
+        height: calc(100vh - 60px); /* Account for increased margins */
+        max-height: calc(100vh - 60px);
+        margin-top: 30px; /* Increased margin for very small screens */
+        margin-bottom: 30px;
+    }
+    
+    .blur-container {
+        max-height: calc(100vh - 240px); /* Account for all margins and navigation */
+        padding: 20px; /* Adjusted padding for very small screens */
+        width: 90%; /* Increased width for very small screens */
+        max-width: 260px; /* Adjusted max-width */
+        margin: 8px auto; /* Smaller margins for very small screens */
+    }
+}
+
+/* Responsive adjustments for small screens */
+@media (max-width: 375px) and (min-width: 321px) {
+    .section-content {
+        padding-top: 35px; /* Adjusted for container margins */
+        padding-bottom: 85px; /* Adjusted for small screens */
+        height: calc(100vh - 50px); /* Account for margins */
+        max-height: calc(100vh - 50px);
+        margin-top: 25px; /* Margin for small screens */
+        margin-bottom: 25px;
+    }
+    
+    .blur-container {
+        max-height: calc(100vh - 220px); /* Account for all margins and navigation */
+        padding: 22px; /* Adjusted padding for small screens */
+        width: 88%; /* Adjusted width */
+        max-width: 290px; /* Adjusted max-width */
+        margin: 9px auto; /* Adjusted margins */
+    }
+}
+
+/* Responsive adjustments for medium screens */
+@media (max-width: 414px) and (min-width: 376px) {
+    .section-content {
+        padding-top: 38px; /* Adjusted for container margins */
+        padding-bottom: 90px; /* Adjusted for medium screens */
+        height: calc(100vh - 45px); /* Account for margins */
+        max-height: calc(100vh - 45px);
+        margin-top: 22px; /* Margin for medium screens */
+        margin-bottom: 23px;
+    }
+    
+    .blur-container {
+        max-height: calc(100vh - 210px); /* Account for all margins and navigation */
+        padding: 24px; /* Adjusted padding for medium screens */
+        width: 86%; /* Adjusted width */
+        max-width: 310px; /* Adjusted max-width */
+        margin: 10px auto; /* Standard margins */
+    }
+}
+
+@media (min-width: 321px) and (max-width: 374px) {
+    .section-content {
+        padding-top: 16vh;
+        padding-bottom: 110px; /* Bottom padding for small screens */
+    }
+    
+    .blur-container {
+        width: 88%;
+        max-width: 320px;
+        padding: 1.25rem;
+        padding-top: 0.75rem;
+        padding-bottom: 1.75rem;
+        max-height: 72vh;
+    }
+}
+
+/* Blur container styling with container margin considerations - DISABLED */
+
 .blur-container {
-    background: transparent;
-    border: none;
-    border-radius: 0;
-    padding: 1rem;
-    width: 90%;
-    max-width: 400px;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(15px);
+    border: 3px solid #fbbf24;
+    border-radius: 25px;
+    padding: 25px;
+    width: 85%;
+    max-width: 320px;
     height: auto;
-    max-height: 90vh;
-    margin: 0;
+    max-height: calc(100vh - 200px);
+    margin: 10px auto;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    box-shadow: none;
+    box-shadow: 0 8px 32px rgba(255, 255, 255, 0.1);
     position: relative;
+    z-index: 2;
     overflow: hidden;
     overflow-x: hidden;
     overflow-y: hidden;
-    opacity: 0;
-    transform: scale(0.8) translateY(50px);
-    transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    opacity: 1;
+    transform: none;
+    transition: none;
     box-sizing: border-box;
+    text-align: center;
+    animation: none;
 }
 
-/* Blur container animation states */
+/* Blur container animation states - DISABLED */
 .blur-container.container-visible {
     opacity: 1;
-    transform: scale(1) translateY(0);
+    transform: none; /* No transform effects */
 }
 
 .blur-container.container-animate {
-    animation: blurContainerReveal 0.8s ease-out forwards;
+    /* animation: blurContainerReveal 0.8s ease-out forwards; */
+    animation: none; /* No animations */
+    opacity: 1;
+    transform: none;
 }
 
 /* Fallback removed - blur-container is now fully transparent */
@@ -988,11 +1256,16 @@ body {
     
     .section-content {
         padding: 1.5rem 1.25rem;
+        padding-top: 15vh;
+        padding-bottom: 120px; /* Standard bottom padding for medium screens */
     }
     
     .blur-container {
         padding: 1.5rem 1.25rem;
         margin: 1rem;
+        width: 85%;
+        max-width: 350px;
+        max-height: 70vh; /* Reduced to accommodate bottom padding */
     }
 }
 
@@ -1083,6 +1356,18 @@ button:active {
         left: 50%;
         transform: translateX(-50%);
     }
+    
+    /* Adjust top padding for medium screens */
+    .section-content {
+        padding-top: 12vh;
+        padding-bottom: 130px; /* Bottom padding for larger screens */
+    }
+    
+    .blur-container {
+        max-height: 80vh;
+        padding: 2rem;
+        padding-top: 1.5rem;
+    }
 }
 
 @media (min-width: 768px) {
@@ -1094,11 +1379,37 @@ button:active {
         border-radius: 12px;
         overflow: hidden;
     }
+    
+    /* Adjust spacing for tablet screens */
+    .section-content {
+        padding-top: 10vh;
+        padding-bottom: 140px; /* Bottom padding for tablet screens */
+    }
+    
+    .blur-container {
+        max-height: 85vh;
+        padding: 2.5rem;
+        padding-top: 2rem;
+        max-width: 400px;
+    }
 }
 
 @media (min-width: 1024px) {
     body {
         padding: 40px 0;
+    }
+    
+    /* Adjust spacing for desktop screens */
+    .section-content {
+        padding-top: 8vh;
+        padding-bottom: 150px; /* Bottom padding for desktop screens */
+    }
+    
+    .blur-container {
+        max-height: 90vh;
+        padding: 3rem;
+        padding-top: 2.5rem;
+        max-width: 420px;
     }
 }
 
@@ -1122,4 +1433,306 @@ html {
 .mobile-container {
     -webkit-overflow-scrolling: touch;
     overscroll-behavior-y: contain;
+}
+
+/* AOS Compatibility and Enhancement */
+[data-aos] {
+    pointer-events: none;
+}
+
+[data-aos].aos-animate {
+    pointer-events: auto;
+}
+
+/* Ensure AOS animations work well with existing transforms */
+[data-aos][data-aos][data-aos-duration="400"],
+[data-aos][data-aos][data-aos-duration="600"],
+[data-aos][data-aos][data-aos-duration="800"],
+[data-aos][data-aos][data-aos-duration="1000"] {
+    transition-timing-function: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+/* Prevent layout shift during AOS animations */
+[data-aos="fade-up"],
+[data-aos="fade-down"],
+[data-aos="fade-left"],
+[data-aos="fade-right"],
+[data-aos="slide-up"],
+[data-aos="slide-down"],
+[data-aos="slide-left"],
+[data-aos="slide-right"] {
+    will-change: transform, opacity;
+}
+
+/* Enhanced AOS animations for better performance */
+[data-aos="zoom-in"],
+[data-aos="zoom-out"] {
+    will-change: transform, opacity;
+    backface-visibility: hidden;
+}
+
+/* Ensure smooth animations on mobile devices */
+@media (max-width: 768px) {
+    [data-aos] {
+        transition-duration: 0.6s !important;
+    }
+    
+    [data-aos][data-aos-delay] {
+        transition-delay: 0.1s !important;
+    }
+}
+
+/* Bottom Navigation Content Protection */
+/* Content is sized to fit without internal scrolling */
+
+/* Adjust blur-container to fit content without scrolling */
+.blur-container {
+    max-height: calc(85vh - 120px); /* Full height minus top padding and bottom navigation */
+    height: auto;
+    overflow-y: hidden; /* No internal scrolling */
+    overflow-x: hidden;
+}
+
+/* Responsive blur-container adjustments */
+@media (max-width: 320px) {
+    .blur-container {
+        max-height: calc(82vh - 118px); /* Adjusted for very small screens */
+    }
+}
+
+@media (min-width: 321px) and (max-width: 374px) {
+    .blur-container {
+        max-height: calc(84vh - 126px); /* Adjusted for small screens */
+    }
+}
+
+@media (min-width: 415px) {
+    .blur-container {
+        max-height: calc(88vh - 142px); /* Adjusted for medium screens */
+    }
+}
+
+@media (min-width: 768px) {
+    .blur-container {
+        max-height: calc(92vh - 152px); /* Adjusted for tablet screens */
+    }
+}
+
+@media (min-width: 1024px) {
+    .blur-container {
+        max-height: calc(92vh - 158px); /* Adjusted for desktop screens */
+    }
+}
+
+/* No internal scrolling within sections */
+
+/* Ensure bottom navigation doesn't interfere with content interaction */
+.bottom-nav {
+    pointer-events: auto;
+}
+
+.section-content {
+    pointer-events: auto;
+}
+
+/* Landscape orientation adjustments */
+@media (max-height: 500px) and (orientation: landscape) {
+    .section-content {
+        padding-top: 5vh !important;
+        padding-bottom: 90px !important;
+    }
+    
+    .blur-container {
+        max-height: calc(85vh - 45px) !important;
+        padding: 1rem !important;
+    }
+    
+    .bottom-nav {
+        padding: 0.5rem 1rem 0.75rem !important;
+    }
+}
+
+/* Responsive Flower Ornaments */
+@media (max-width: 480px) {
+    .flower-ornament {
+        top: -30px;
+    }
+    
+    .flower-top-left {
+        left: -30px;
+        animation: flowerEntranceLeft 1.5s ease-out forwards, 
+                   flowerGentleFloat 4s ease-in-out infinite 1.5s;
+    }
+    
+    .flower-top-right {
+        right: -30px;
+        animation: flowerEntranceRight 1.5s ease-out forwards, 
+                   flowerGentleSway 5s ease-in-out infinite 1.5s;
+    }
+    
+    .flower-bottom-left {
+        bottom: -40px;
+        left: -30px;
+    }
+    
+    .flower-bottom-right {
+        bottom: -40px;
+        right: -30px;
+    }
+    
+    .flower-img {
+        width: 300px;
+        height: 300px;
+    }
+}
+
+@media (max-width: 320px) {
+    .flower-img {
+        width: 300px;
+        height: 300px;
+    }
+}
+
+@media (min-width: 768px) {
+    .flower-ornament {
+        top: -45px;
+    }
+    
+    .flower-top-left {
+        left: -45px;
+        animation: flowerEntranceLeft 1.5s ease-out forwards, 
+                   flowerGentleFloat 4s ease-in-out infinite 1.5s;
+    }
+    
+    .flower-top-right {
+        right: -45px;
+        animation: flowerEntranceRight 1.5s ease-out forwards, 
+                   flowerGentleSway 5s ease-in-out infinite 1.5s;
+    }
+    
+    .flower-bottom-left {
+        bottom: -50px;
+        left: -45px;
+    }
+    
+    .flower-bottom-right {
+        bottom: -50px;
+        right: -45px;
+    }
+    
+    .flower-img {
+        width: 60px;
+        height: 60px;
+    }
+}
+
+@media (min-width: 1024px) {
+    .flower-ornament {
+        top: -50px;
+    }
+    
+    .flower-top-left {
+        left: -50px;
+        animation: flowerEntranceLeft 1.5s ease-out forwards, 
+                   flowerGentleFloat 4s ease-in-out infinite 1.5s;
+    }
+    
+    .flower-top-right {
+        right: -50px;
+        animation: flowerEntranceRight 1.5s ease-out forwards, 
+                   flowerGentleSway 5s ease-in-out infinite 1.5s;
+    }
+    
+    .flower-bottom-left {
+        bottom: -55px;
+        left: -50px;
+    }
+    
+    .flower-bottom-right {
+        bottom: -55px;
+        right: -50px;
+    }
+    
+    .flower-img {
+        width: 80px;
+        height: 80px;
+    }
+}
+
+/* Very small landscape screens */
+@media (max-height: 400px) and (orientation: landscape) {
+    .section-content {
+        padding-top: 2vh !important;
+        padding-bottom: 80px !important;
+    }
+    
+    .blur-container {
+        max-height: calc(90vh - 40px) !important;
+        padding: 0.75rem !important;
+    }
+    
+    .flower-img {
+        width: 200px;
+        height: 200px;
+    }
+}
+
+/* Mobile portrait optimization */
+@media (max-width: 600px) and (orientation: portrait) {
+    .flower-ornament {
+        top: -35px;
+    }
+    
+    .flower-top-left {
+        left: -35px;
+    }
+    
+    .flower-top-right {
+        right: -35px;
+    }
+    
+    .flower-bottom-left {
+        bottom: -45px;
+        left: -35px;
+    }
+    
+    .flower-bottom-right {
+        bottom: -45px;
+        right: -35px;
+    }
+    
+    .flower-img {
+        width:200px;
+        height: 200px;
+    }
+}
+
+/* Mobile landscape optimization */
+@media (max-width: 900px) and (orientation: landscape) and (max-height: 600px) {
+    .flower-ornament {
+        top: -25px;
+    }
+    
+    .flower-top-left {
+        left: -25px;
+    }
+    
+    .flower-top-right {
+        right: -25px;
+    }
+    
+    .flower-bottom-left {
+        bottom: -40px;
+        left: -25px;
+    }
+    
+    .flower-bottom-right {
+        bottom: -40px;
+        right: -25px;
+    }
+    
+    .flower-img {
+        width: 100px;
+        height: 100px;
+    }
 }

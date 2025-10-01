@@ -23,7 +23,7 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Set initial active section
     showSection(0);
-    updateNavigationSlider(0);
+    updateActiveNavigation(0);
     
     // Initialize navigation visibility
     setTimeout(() => {
@@ -76,7 +76,7 @@ function initializeElements() {
     blurContainers = document.querySelectorAll('.blur-container');
 }
 
-// Initialize page-like animations
+// Initialize page-like animations - no blur container animations
 function initializePageAnimations() {
     // Hide all sections initially except the first one
     sectionElements.forEach((section, index) => {
@@ -84,9 +84,8 @@ function initializePageAnimations() {
             section.classList.add('section-visible');
             const blurContainer = section.querySelector('.blur-container');
             if (blurContainer) {
-                setTimeout(() => {
-                    blurContainer.classList.add('container-visible');
-                }, 300);
+                // No animation delay - show immediately
+                blurContainer.classList.add('container-visible');
             }
         } else {
             section.style.display = 'none';
@@ -126,23 +125,22 @@ function showSection(index) {
         }
     }
     
-    // Quick entrance animation
-    setTimeout(() => {
-        targetSectionEl.classList.add('section-visible');
-        
-        const targetBlur = targetSectionEl.querySelector('.blur-container');
-        if (targetBlur) {
-            targetBlur.classList.add('container-visible');
-        }
-        
-        currentSection = index;
-        
-        // Update navigation state
-        updateActiveNavigation(index);
-        
-        // Update navigation visibility when section changes
-        updateNavigationVisibility();
-    }, 50);
+    // Instant display - no animation delays
+    targetSectionEl.classList.add('section-visible');
+    
+    const targetBlur = targetSectionEl.querySelector('.blur-container');
+    if (targetBlur) {
+        // Show blur container immediately without animation
+        targetBlur.classList.add('container-visible');
+    }
+    
+    currentSection = index;
+    
+    // Update navigation state
+    updateActiveNavigation(index);
+    
+    // Update navigation visibility when section changes
+    updateNavigationVisibility();
 }
 
 // Initialize navigation functionality
@@ -202,29 +200,62 @@ function initializeScrollHandling() {
     // Disable traditional scrolling
     mobileContainer.style.overflow = 'hidden';
     
-    // Handle wheel events for page transitions
-    mobileContainer.addEventListener('wheel', (e) => {
-        // Only handle wheel events if not on interactive elements
-        if (!e.target.closest('form, input, select, button, textarea, a')) {
-            e.preventDefault();
-            
-            if (e.deltaY > 0) {
-                // Scroll down - next section
-                const nextSection = Math.min(currentSection + 1, sections.length - 1);
-                if (nextSection !== currentSection) {
-                    showSection(nextSection);
-                    updateNavigationSlider(nextSection);
-                }
-            } else {
-                // Scroll up - previous section
-                const prevSection = Math.max(currentSection - 1, 0);
-                if (prevSection !== currentSection) {
-                    showSection(prevSection);
-                    updateNavigationSlider(prevSection);
-                }
+    // Simple debounce for scroll events
+    let scrollTimeout = null;
+    let isHandlingScroll = false;
+    
+    function handleScrollNavigation(direction) {
+        if (isHandlingScroll || isScrolling) return;
+        
+        isHandlingScroll = true;
+        
+        // Clear any existing timeout
+        if (scrollTimeout) {
+            clearTimeout(scrollTimeout);
+        }
+        
+        // Set timeout to reset the flag
+        scrollTimeout = setTimeout(() => {
+            isHandlingScroll = false;
+            scrollTimeout = null;
+        }, 500);
+        
+        if (direction > 0) {
+            // Scroll down - next section
+            if (currentSection < sections.length - 1) {
+                showSection(currentSection + 1);
+                updateActiveNavigation(currentSection + 1);
+            }
+        } else if (direction < 0) {
+            // Scroll up - previous section
+            if (currentSection > 0) {
+                showSection(currentSection - 1);
+                updateActiveNavigation(currentSection - 1);
             }
         }
-    }, { passive: false });
+    }
+    
+    // Wheel event handler for desktop
+    function wheelHandler(e) {
+        // Check if target is an interactive element
+        if (e.target.closest('form, input, select, button, textarea, a, [contenteditable]')) {
+            return;
+        }
+        
+        e.preventDefault();
+        e.stopPropagation();
+        
+        // Determine scroll direction
+        const delta = e.deltaY || e.detail || e.wheelDelta;
+        handleScrollNavigation(delta);
+    }
+    
+    // Add wheel event listeners
+    document.addEventListener('wheel', wheelHandler, { passive: false });
+    document.addEventListener('DOMMouseScroll', wheelHandler, { passive: false });
+    
+    // For older browsers
+    document.addEventListener('mousewheel', wheelHandler, { passive: false });
 }
 
 // Initialize keyboard navigation
@@ -237,7 +268,7 @@ function initializeKeyboardNavigation() {
                 const nextSection = Math.min(currentSection + 1, sections.length - 1);
                 if (nextSection !== currentSection) {
                     showSection(nextSection);
-                    updateNavigationSlider(nextSection);
+                    updateActiveNavigation(nextSection);
                 }
                 break;
             case 'ArrowUp':
@@ -246,18 +277,18 @@ function initializeKeyboardNavigation() {
                 const prevSection = Math.max(currentSection - 1, 0);
                 if (prevSection !== currentSection) {
                     showSection(prevSection);
-                    updateNavigationSlider(prevSection);
+                    updateActiveNavigation(prevSection);
                 }
                 break;
             case 'Home':
                 e.preventDefault();
                 showSection(0);
-                updateNavigationSlider(0);
+                updateActiveNavigation(0);
                 break;
             case 'End':
                 e.preventDefault();
                 showSection(sections.length - 1);
-                updateNavigationSlider(sections.length - 1);
+                updateActiveNavigation(sections.length - 1);
                 break;
         }
     });
@@ -281,7 +312,7 @@ function initializeFormHandling() {
 // Legacy function - kept for compatibility
 function scrollToSection(index) {
     showSection(index);
-    updateNavigationSlider(index);
+    updateActiveNavigation(index);
 }
 
 // Debounce function for performance optimization
@@ -305,7 +336,7 @@ function updateCurrentSection() {
     
     if (newSection !== currentSection && newSection >= 0 && newSection < sections.length) {
         updateActiveSection(newSection);
-        updateNavigationSlider(newSection);
+        updateActiveNavigation(newSection);
     }
 }
 
@@ -449,47 +480,134 @@ window.addEventListener('resize', debounce(() => {
     updateNavigationSlider(currentSection);
 }, 250));
 
-// Enhanced wheel event handling for section transitions
-// Add touch support for mobile devices
+// Enhanced touch support for mobile devices
 let touchStartY = 0;
 let touchEndY = 0;
+let touchStartX = 0;
+let touchEndX = 0;
+let touchStartTime = 0;
+let touchTimeout;
 
-// Only apply touch events to the mobile container, not to content within sections
-mobileContainer.addEventListener('touchstart', (e) => {
-    // Only handle touch if it's not on interactive elements
-    if (!e.target.closest('form, input, select, button, textarea, a')) {
-        touchStartY = e.changedTouches[0].screenY;
+function initializeTouchHandling() {
+    let isTouchHandling = false;
+    
+    // Touch start handler
+    function touchStartHandler(e) {
+        // Skip if target is an interactive element
+        if (e.target.closest('form, input, select, button, textarea, a, [contenteditable]')) {
+            return;
+        }
+        
+        touchStartY = e.touches[0].clientY;
+        touchStartX = e.touches[0].clientX;
+        touchStartTime = Date.now();
+        isTouchHandling = false;
     }
-}, { passive: true });
-
-mobileContainer.addEventListener('touchend', (e) => {
-    // Only handle touch if it's not on interactive elements
-    if (!e.target.closest('form, input, select, button, textarea, a')) {
-        touchEndY = e.changedTouches[0].screenY;
+    
+    // Touch end handler
+    function touchEndHandler(e) {
+        // Skip if target is an interactive element
+        if (e.target.closest('form, input, select, button, textarea, a, [contenteditable]')) {
+            return;
+        }
+        
+        if (isTouchHandling || isScrolling) return;
+        
+        touchEndY = e.changedTouches[0].clientY;
+        touchEndX = e.changedTouches[0].clientX;
         handleSwipe();
     }
-}, { passive: true });
+    
+    // Touch move handler to prevent default scrolling
+    function touchMoveHandler(e) {
+        // Skip if target is an interactive element
+        if (e.target.closest('form, input, select, button, textarea, a, [contenteditable]')) {
+            return;
+        }
+        
+        // Prevent default scrolling behavior
+        e.preventDefault();
+    }
+    
+    // Add touch events
+    document.addEventListener('touchstart', touchStartHandler, { passive: true });
+    document.addEventListener('touchend', touchEndHandler, { passive: true });
+    document.addEventListener('touchmove', touchMoveHandler, { passive: false });
+}
 
 function handleSwipe() {
-    // Prevent swipe if already transitioning
-    if (isScrolling) return;
+    // Prevent multiple swipe handling
+    if (isScrolling || touchTimeout) return;
     
-    const swipeThreshold = 50;
-    const swipeDistance = touchStartY - touchEndY;
+    // Set debounce timeout
+    touchTimeout = setTimeout(() => {
+        touchTimeout = null;
+    }, 400);
     
-    if (Math.abs(swipeDistance) > swipeThreshold) {
-        if (swipeDistance > 0 && currentSection < sections.length - 1) {
+    const swipeThreshold = 50; // Minimum distance for swipe
+    const maxSwipeTime = 800; // Maximum time for valid swipe
+    
+    const swipeDistanceY = touchStartY - touchEndY;
+    const swipeDistanceX = Math.abs(touchStartX - touchEndX);
+    const swipeTime = Date.now() - touchStartTime;
+    
+    // Check if it's a valid vertical swipe
+    if (Math.abs(swipeDistanceY) > swipeThreshold && 
+        swipeDistanceX < Math.abs(swipeDistanceY) * 0.5 && 
+        swipeTime < maxSwipeTime) {
+        
+        if (swipeDistanceY > 0) {
             // Swipe up - go to next section
-            showSection(currentSection + 1);
-            updateNavigationSlider(currentSection + 1);
-        } else if (swipeDistance < 0 && currentSection > 0) {
+            if (currentSection < sections.length - 1) {
+                showSection(currentSection + 1);
+                updateActiveNavigation(currentSection + 1);
+            }
+        } else {
             // Swipe down - go to previous section
-            showSection(currentSection - 1);
-            updateNavigationSlider(currentSection - 1);
+            if (currentSection > 0) {
+                showSection(currentSection - 1);
+                updateActiveNavigation(currentSection - 1);
+            }
         }
     }
 }
 
+// Initialize touch handling
+initializeTouchHandling();
+
+// Initialize AOS (Animate On Scroll) with optimal settings
+document.addEventListener('DOMContentLoaded', function() {
+    AOS.init({
+        duration: 800, // Animation duration in milliseconds
+        easing: 'ease-in-out', // Easing function
+        once: true, // Animation happens only once
+        mirror: false, // Elements don't animate out while scrolling past them
+        offset: 100, // Offset (in px) from the original trigger point
+        delay: 0, // Delay animation (in ms)
+        anchorPlacement: 'top-bottom', // Defines which position of the element regarding to window should trigger the animation
+        disable: false, // Disable AOS on specific conditions
+        startEvent: 'DOMContentLoaded', // Name of the event dispatched on the document
+        animatedClassName: 'aos-animate', // Class applied on animation
+        initClassName: 'aos-init', // Class applied after initialization
+        useClassNames: false, // If true, will add content of `data-aos` as classes on scroll
+        disableMutationObserver: false, // Disables automatic mutations' detections
+        debounceDelay: 50, // The delay on debounce used while resizing window
+        throttleDelay: 99, // The delay on throttle used while scrolling the page
+    });
+    
+    // Refresh AOS when sections change to ensure animations work properly
+    const originalShowSection = window.showSection;
+    if (originalShowSection) {
+        window.showSection = function(index) {
+            originalShowSection(index);
+            // Small delay to ensure DOM is updated before refreshing AOS
+            setTimeout(() => {
+                AOS.refresh();
+            }, 100);
+        };
+    }
+});
+
 // Export functions for global access if needed
 window.scrollToSection = scrollToSection;
-window.updateNavigationSlider = updateNavigationSlider;
+window.updateActiveNavigation = updateActiveNavigation;
