@@ -312,6 +312,91 @@
 }
 
 /* Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Invitation Lock Section Styles */
+.invitation-locked-section {
+    position: fixed !important;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    z-index: 9999;
+    background: linear-gradient(135deg, #e0f2fe 0%, #f0f9ff 100%);
+}
+
+.invitation-locked-section .section-content {
+    position: relative;
+    z-index: 2;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.open-invitation-btn {
+    background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%);
+    color: #1f2937;
+    font-weight: 600;
+    font-size: 1.1rem;
+    padding: 16px 32px;
+    border: none;
+    border-radius: 50px;
+    box-shadow: 0 10px 25px rgba(251, 191, 36, 0.3);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    animation: pulseGlow 2s infinite;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 200px;
+}
+
+.open-invitation-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 15px 35px rgba(251, 191, 36, 0.4);
+    background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+}
+
+.open-invitation-btn:active {
+    transform: translateY(0);
+}
+
+@keyframes pulseGlow {
+    0%, 100% {
+        box-shadow: 0 10px 25px rgba(251, 191, 36, 0.3);
+    }
+    50% {
+        box-shadow: 0 15px 35px rgba(251, 191, 36, 0.5);
+    }
+}
+
+/* Lock state - disable interactions */
+body.invitation-locked {
+    overflow: hidden;
+    touch-action: none;
+    user-select: none;
+}
+
+body.invitation-locked .mobile-container {
+    pointer-events: none;
+}
+
+/* Hide section when invitation is opened */
+.invitation-locked-section.hidden {
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.5s ease, visibility 0.5s ease;
+}
+
+.invitation-locked-section.hidden {
+    display: none !important;
+}
+
 body {
     margin: 0;
     padding: 0;

@@ -34,7 +34,7 @@
 </head>
 <body class="bg-wedding-blue font-poppins overflow-x-hidden">
     <!-- Responsive Container -->
-    <div class="mobile-container w-full max-w-sm xs:max-w-sm sm:max-w-sm md:max-w-md lg:max-w-md xl:max-w-md mx-auto">
+    <div class="mobile-container w-full max-w-sm xs:max-w-sm sm:max-w-sm md:max-w-md lg:max-w-md xl:max-w-md mx-auto" id="mainContent">
         <!-- Navigation Indicator - Hidden initially -->
         <div class="nav-indicator" id="navIndicator" style="display: none;">
             <div class="nav-dot active" onclick="scrollToSection(0)"></div>
@@ -53,7 +53,7 @@
         <main id="main-content">
             
             <!-- Opening Section -->
-            <section id="opening" class="section-snap relative">
+            <section id="opening" class="section-snap relative invitation-locked-section">
                 <!-- Flower Ornaments -->
                 <div class="flower-ornament flower-top-left">
                     <img src="bunga_atas_kiri.svg" alt="Ornamen Bunga Kiri" class="flower-img">
@@ -80,17 +80,13 @@
                         </div>
                         
                         <!-- Open Invitation Button -->
-                        <button id="openInvitationBtn" class="bg-yellow-600 hover:bg-yellow-700 text-gray-800 font-semibold py-2 xs:py-3 sm:py-3 md:py-4 px-6 xs:px-8 sm:px-8 md:px-10 text-sm xs:text-base sm:text-base md:text-lg rounded-full shadow-lg transform transition-all duration-300 hover:scale-105 animate-pulse" data-aos="zoom-in" data-aos-delay="1600">
+                        <button id="openInvitationBtn" class="open-invitation-btn" data-aos="zoom-in" data-aos-delay="1600">
+                            <i class="fas fa-envelope-open mr-2"></i>
                             Buka Undangan
                         </button>
+                        
+
                     </div>
-                </div>
-                <!-- Bottom Flower Ornaments -->
-                <div class="flower-ornament flower-bottom-left">
-                    <img src="bungan_bawah_kiri.svg" alt="Ornamen Bunga Bawah Kiri" class="flower-img">
-                </div>
-                <div class="flower-ornament flower-bottom-right">
-                    <img src="bunga_bawah_kanan.svg" alt="Ornamen Bunga Bawah Kanan" class="flower-img">
                 </div>
             </section>
             
@@ -122,13 +118,6 @@
                     </div>
                 </div>
                 </div>
-                <!-- Bottom Flower Ornaments -->
-                <div class="flower-ornament flower-bottom-left">
-                    <img src="bungan_bawah_kiri.svg" alt="Ornamen Bunga Bawah Kiri" class="flower-img">
-                </div>
-                <div class="flower-ornament flower-bottom-right">
-                    <img src="bunga_bawah_kanan.svg" alt="Ornamen Bunga Bawah Kanan" class="flower-img">
-                </div>
             </section>
             
             <!-- Quotes Section -->
@@ -159,13 +148,6 @@
                             </p>
                         </div>
                     </div>
-                </div>
-                <!-- Bottom Flower Ornaments -->
-                <div class="flower-ornament flower-bottom-left">
-                    <img src="bungan_bawah_kiri.svg" alt="Ornamen Bunga Bawah Kiri" class="flower-img">
-                </div>
-                <div class="flower-ornament flower-bottom-right">
-                    <img src="bunga_bawah_kanan.svg" alt="Ornamen Bunga Bawah Kanan" class="flower-img">
                 </div>
             </section>
             
@@ -217,13 +199,6 @@
                         </div>
                     </div>
                 </div>
-                <!-- Bottom Flower Ornaments -->
-                <div class="flower-ornament flower-bottom-left">
-                    <img src="bungan_bawah_kiri.svg" alt="Ornamen Bunga Bawah Kiri" class="flower-img">
-                </div>
-                <div class="flower-ornament flower-bottom-right">
-                    <img src="bunga_bawah_kanan.svg" alt="Ornamen Bunga Bawah Kanan" class="flower-img">
-                </div>
             </section>
             
             <!-- Detail Akad Nikah Section -->
@@ -245,12 +220,12 @@
                                 <h3 class="font-dancing text-blue-400 text-xl mb-4" data-aos="fade-in" data-aos-delay="800">Ijab Kabul</h3>
                             </div>
                             
-                            <div class="space-y-4 text-gray-800">
+                            <div class="space-y-4 text-black">
                                 <div class="flex items-center justify-center" data-aos="slide-right" data-aos-delay="1000">
                                     <i class="fas fa-calendar-alt mr-3 text-yellow-400"></i>
                                     <div>
                                         <p class="font-semibold">Sabtu, 15 Juni 2024</p>
-                                        <p class="text-sm text-gray-300">15 Dzulhijjah 1445 H</p>
+                                        <p class="text-sm text-black-300">15 Dzulhijjah 1445 H</p>
                                     </div>
                                 </div>
                                 
@@ -258,7 +233,7 @@
                                     <i class="fas fa-clock mr-3 text-yellow-400"></i>
                                     <div>
                                         <p class="font-semibold">08.00 - 10.00 WIB</p>
-                                        <p class="text-sm text-black-300">Pagi Hari</p>
+                                        <p class="text-sm text-black">Pagi Hari</p>
                                     </div>
                                 </div>
                                 
@@ -266,7 +241,7 @@
                                     <i class="fas fa-map-marker-alt mr-3 text-yellow-400"></i>
                                     <div>
                                         <p class="font-semibold">Masjid Al-Ikhlas</p>
-                                        <p class="text-sm text-gray-300">Jl. Merdeka No. 123, Jakarta Pusat</p>
+                                        <p class="text-sm text-black-300">Jl. Merdeka No. 123, Jakarta Pusat</p>
                                     </div>
                                 </div>
                             </div>
@@ -278,13 +253,6 @@
                             </div>
                         </div>
                     </div>
-                </div>
-                <!-- Bottom Flower Ornaments -->
-                <div class="flower-ornament flower-bottom-left">
-                    <img src="bungan_bawah_kiri.svg" alt="Ornamen Bunga Bawah Kiri" class="flower-img">
-                </div>
-                <div class="flower-ornament flower-bottom-right">
-                    <img src="bunga_bawah_kanan.svg" alt="Ornamen Bunga Bawah Kanan" class="flower-img">
                 </div>
             </section>
             
@@ -307,12 +275,12 @@
                                 <h3 class="font-dancing text-blue-400 text-xl mb-4" data-aos="fade-in" data-aos-delay="800">Walimatul Ursy</h3>
                             </div>
                             
-                            <div class="space-y-4 text-gray-800">
+                            <div class="space-y-4 text-black">
                                 <div class="flex items-center justify-center" data-aos="slide-right" data-aos-delay="1000">
                                     <i class="fas fa-calendar-alt mr-3 text-yellow-400"></i>
                                     <div>
                                         <p class="font-semibold">Sabtu, 15 Juni 2024</p>
-                                        <p class="text-sm text-gray-300">15 Dzulhijjah 1445 H</p>
+                                        <p class="text-sm text-black">15 Dzulhijjah 1445 H</p>
                                     </div>
                                 </div>
                                 
@@ -320,7 +288,7 @@
                                     <i class="fas fa-clock mr-3 text-yellow-400"></i>
                                     <div>
                                         <p class="font-semibold">11.00 - 15.00 WIB</p>
-                                        <p class="text-sm text-gray-300">Siang Hari</p>
+                                        <p class="text-sm text-black">Siang Hari</p>
                                     </div>
                                 </div>
                                 
@@ -328,13 +296,13 @@
                                     <i class="fas fa-building mr-3 text-yellow-400"></i>
                                     <div>
                                         <p class="font-semibold">Gedung Serbaguna Harmoni</p>
-                                        <p class="text-sm text-gray-300">Jl. Harmoni No. 456, Jakarta Pusat</p>
+                                        <p class="text-sm text-black">Jl. Harmoni No. 456, Jakarta Pusat</p>
                                     </div>
                                 </div>
                             </div>
                             
                             <div class="mt-6 pt-4 border-t border-gray-400" data-aos="fade-up" data-aos-delay="1600">
-                                <p class="text-sm text-gray-300">
+                                <p class="text-sm text-black">
                                     Merupakan suatu kehormatan dan kebahagiaan bagi kami apabila Bapak/Ibu/Saudara/i berkenan hadir untuk memberikan doa restu kepada kedua mempelai.
                                 </p>
                             </div>
@@ -500,51 +468,7 @@
                     </div>
                 </div>
             </section>
-            
-            <!-- Gallery Section -->
-            <section id="gallery" class="section-snap relative">
-                <!-- Flower Ornaments -->
-                <div class="flower-ornament flower-top-left">
-                    <img src="bunga_atas_kiri.svg" alt="Ornamen Bunga Kiri" class="flower-img">
-                </div>
-                <div class="flower-ornament flower-top-right">
-                    <img src="bunga_atas_kanan.svg" alt="Ornamen Bunga Kanan" class="flower-img">
-                </div>
-                <div class="section-content">
-                    <div class="blur-container">
-                        <h2 class="font-dancing text-yellow-600 mb-6 text-center" data-aos="fade-down" data-aos-delay="200">Gallery</h2>
-                        
-                        <div class="bg-transparent rounded-lg p-6 text-center" data-aos="fade-up" data-aos-delay="400">
-                            <div class="grid grid-cols-2 gap-4 mb-4">
-                                <div class="bg-yellow-400 bg-opacity-20 rounded-lg h-32 flex items-center justify-center" data-aos="zoom-in" data-aos-delay="600">
-                                    <i class="fas fa-image text-yellow-400 text-2xl"></i>
-                                </div>
-                                <div class="bg-blue-400 bg-opacity-20 rounded-lg h-32 flex items-center justify-center" data-aos="zoom-in" data-aos-delay="700">
-                                    <i class="fas fa-image text-blue-400 text-2xl"></i>
-                                </div>
-                                <div class="bg-yellow-400 bg-opacity-20 rounded-lg h-32 flex items-center justify-center" data-aos="zoom-in" data-aos-delay="800">
-                                    <i class="fas fa-image text-yellow-400 text-2xl"></i>
-                                </div>
-                                <div class="bg-blue-400 bg-opacity-20 rounded-lg h-32 flex items-center justify-center" data-aos="zoom-in" data-aos-delay="900">
-                                    <i class="fas fa-image text-blue-400 text-2xl"></i>
-                                </div>
-                            </div>
-                            
-                            <p class="text-gray-800 text-sm" data-aos="fade-up" data-aos-delay="1000">
-                                Momen indah perjalanan cinta kami
-                            </p>
-                        </div>
-                    </div>
-                </div>
-                <!-- Bottom Flower Ornaments -->
-                <div class="flower-ornament flower-bottom-left">
-                    <img src="bungan_bawah_kiri.svg" alt="Ornamen Bunga Bawah Kiri" class="flower-img">
-                </div>
-                <div class="flower-ornament flower-bottom-right">
-                    <img src="bunga_bawah_kanan.svg" alt="Ornamen Bunga Bawah Kanan" class="flower-img">
-                </div>
-            </section>
-            
+                  
             <!-- Penutup Section -->
             <section id="penutup" class="section-snap relative">
                 <!-- Flower Ornaments -->

@@ -13,6 +13,9 @@ let blurContainers;
 
 // Initialize the application
 document.addEventListener('DOMContentLoaded', function() {
+    // Initialize invitation lock first
+    initializeInvitationLock();
+    
     initializeElements();
     initializePageAnimations();
     initializeNavigation();
@@ -31,9 +34,43 @@ document.addEventListener('DOMContentLoaded', function() {
     }, 100);
 });
 
+// Initialize Invitation Lock
+function initializeInvitationLock() {
+    // Add lock class to body to disable interactions
+    document.body.classList.add('invitation-locked');
+    
+    // Disable scroll and touch events
+    document.addEventListener('wheel', preventDefaultEvent, { passive: false });
+    document.addEventListener('touchmove', preventDefaultEvent, { passive: false });
+    document.addEventListener('keydown', preventKeyboardNavigation, { passive: false });
+}
+
+// Prevent default events when invitation is locked
+function preventDefaultEvent(e) {
+    if (document.body.classList.contains('invitation-locked')) {
+        e.preventDefault();
+        e.stopPropagation();
+        return false;
+    }
+}
+
+// Prevent keyboard navigation when invitation is locked
+function preventKeyboardNavigation(e) {
+    if (document.body.classList.contains('invitation-locked')) {
+        // Prevent arrow keys, space, page up/down, home, end
+        const preventedKeys = [32, 33, 34, 35, 36, 37, 38, 39, 40];
+        if (preventedKeys.includes(e.keyCode)) {
+            e.preventDefault();
+            e.stopPropagation();
+            return false;
+        }
+    }
+}
+
 // Initialize Open Invitation Button
 function initializeOpenInvitationButton() {
     const openBtn = document.getElementById('openInvitationBtn');
+    const openingSection = document.getElementById('opening');
     const bottomNav = document.getElementById('bottomNav');
     const navIndicator = document.getElementById('navIndicator');
     
@@ -42,27 +79,48 @@ function initializeOpenInvitationButton() {
             // Mark invitation as opened
             invitationOpened = true;
             
-            // Hide the button immediately with fade out animation
-            openBtn.style.transition = 'opacity 0.3s ease-out, transform 0.3s ease-out';
-            openBtn.style.opacity = '0';
-            openBtn.style.transform = 'scale(0.8)';
+            // Remove lock class from body to enable interactions
+            document.body.classList.remove('invitation-locked');
+            
+            // Remove event listeners
+            document.removeEventListener('wheel', preventDefaultEvent);
+            document.removeEventListener('touchmove', preventDefaultEvent);
+            document.removeEventListener('keydown', preventKeyboardNavigation);
+            
+            // Hide the opening section with animation
+            if (openingSection) {
+                openingSection.classList.add('hidden');
+                openingSection.classList.remove('invitation-locked-section');
+                
+                // Remove section from view after animation
+                setTimeout(() => {
+                    openingSection.style.display = 'none';
+                }, 500);
+            }
             
             // Show navigation and navigate to next section
             setTimeout(() => {
-                // Completely hide the button
-                openBtn.style.display = 'none';
-                
-                // Show navigation elements
                 if (bottomNav) {
-                    bottomNav.style.display = 'block';
+                    bottomNav.style.display = 'flex';
+                    bottomNav.style.opacity = '0';
+                    bottomNav.style.transition = 'opacity 0.3s ease-in';
+                    setTimeout(() => {
+                        bottomNav.style.opacity = '1';
+                    }, 100);
                 }
+                
                 if (navIndicator) {
-                    navIndicator.style.display = 'block';
+                    navIndicator.style.display = 'flex';
+                    navIndicator.style.opacity = '0';
+                    navIndicator.style.transition = 'opacity 0.3s ease-in';
+                    setTimeout(() => {
+                        navIndicator.style.opacity = '1';
+                    }, 100);
                 }
                 
                 // Navigate to greeting section
                 scrollToSection(1);
-            }, 300);
+            }, 600);
         });
     }
 }
@@ -205,7 +263,7 @@ function initializeScrollHandling() {
     let isHandlingScroll = false;
     
     function handleScrollNavigation(direction) {
-        if (isHandlingScroll || isScrolling) return;
+        if (isHandlingScroll || isScrolling || !invitationOpened) return;
         
         isHandlingScroll = true;
         
@@ -311,6 +369,7 @@ function initializeFormHandling() {
 
 // Legacy function - kept for compatibility
 function scrollToSection(index) {
+    if (!invitationOpened) return;
     showSection(index);
     updateActiveNavigation(index);
 }
@@ -511,7 +570,7 @@ function initializeTouchHandling() {
             return;
         }
         
-        if (isTouchHandling || isScrolling) return;
+        if (isTouchHandling || isScrolling || !invitationOpened) return;
         
         touchEndY = e.changedTouches[0].clientY;
         touchEndX = e.changedTouches[0].clientX;
@@ -537,7 +596,7 @@ function initializeTouchHandling() {
 
 function handleSwipe() {
     // Prevent multiple swipe handling
-    if (isScrolling || touchTimeout) return;
+    if (isScrolling || touchTimeout || !invitationOpened) return;
     
     // Set debounce timeout
     touchTimeout = setTimeout(() => {
