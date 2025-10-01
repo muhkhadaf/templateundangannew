@@ -30,34 +30,28 @@
                flowerGentleSway 5s ease-in-out infinite 1.5s;
 }
 
+.flower-bottom-left {
+    left: -40px;
+    top: auto;
+    bottom: 50px;
+    animation: flowerEntranceLeft 1.5s ease-out forwards, 
+               flowerGentleFloat 4s ease-in-out infinite 1.5s;
+}
+
+.flower-bottom-right {
+    right: -40px;
+    top: auto;
+    bottom: 50px;
+    animation: flowerEntranceRight 1.5s ease-out forwards, 
+               flowerGentleSway 5s ease-in-out infinite 1.5s;
+}
+
 .flower-img {
     width: 500px;
     height: 500px;
     opacity: 1;
     filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
     transition: all 0.3s ease;
-}
-
-/* Bottom Flower Ornaments */
-.flower-bottom-left {
-    bottom: -100px;
-    left: -40px;
-    transform: translateY(20px);
-    animation: flowerEntranceLeft 1.5s ease-out forwards, 
-               flowerGentleFloat 4s ease-in-out infinite 1.5s;
-}
-
-.flower-bottom-right {
-    bottom: -50px;
-    right: -40px;
-    transform: translateY(20px);
-    animation: flowerEntranceRight 1.5s ease-out forwards, 
-               flowerGentleSway 4s ease-in-out infinite 1.5s;
-}
-
-.flower-offset-bottom {
-    transform: translateY(700px) !important;
-    animation: flowerBottomGentleFloat 3s ease-in-out infinite;
 }
 
 /* Custom Animations */
@@ -132,15 +126,6 @@
     }
     75% {
         transform: translateX(-2px) rotate(-1deg);
-    }
-}
-
-@keyframes flowerBottomGentleFloat {
-    0%, 100% {
-        transform: translateY(0px);
-    }
-    50% {
-        transform: translateY(10px);
     }
 }
 
@@ -1571,13 +1556,19 @@ html {
     }
     
     .flower-bottom-left {
-        bottom: -40px;
         left: -30px;
+        top: auto;
+        bottom: 30px;
+        animation: flowerEntranceLeft 1.5s ease-out forwards, 
+                   flowerGentleFloat 4s ease-in-out infinite 1.5s;
     }
     
     .flower-bottom-right {
-        bottom: -40px;
         right: -30px;
+        top: auto;
+        bottom: 30px;
+        animation: flowerEntranceRight 1.5s ease-out forwards, 
+                   flowerGentleSway 5s ease-in-out infinite 1.5s;
     }
     
     .flower-img {
@@ -1611,13 +1602,19 @@ html {
     }
     
     .flower-bottom-left {
-        bottom: -50px;
         left: -45px;
+        top: auto;
+        bottom: 50px;
+        animation: flowerEntranceLeft 1.5s ease-out forwards, 
+                   flowerGentleFloat 4s ease-in-out infinite 1.5s;
     }
     
     .flower-bottom-right {
-        bottom: -50px;
         right: -45px;
+        top: auto;
+        bottom: 50px;
+        animation: flowerEntranceRight 1.5s ease-out forwards, 
+                   flowerGentleSway 5s ease-in-out infinite 1.5s;
     }
     
     .flower-img {
@@ -1644,13 +1641,19 @@ html {
     }
     
     .flower-bottom-left {
-        bottom: -55px;
         left: -50px;
+        top: auto;
+        bottom: 30px;
+        animation: flowerEntranceLeft 1.5s ease-out forwards, 
+                   flowerGentleFloat 4s ease-in-out infinite 1.5s;
     }
     
     .flower-bottom-right {
-        bottom: -55px;
         right: -50px;
+        top: auto;
+        bottom: 30px;
+        animation: flowerEntranceRight 1.5s ease-out forwards, 
+                   flowerGentleSway 5s ease-in-out infinite 1.5s;
     }
     
     .flower-img {
@@ -1692,13 +1695,15 @@ html {
     }
     
     .flower-bottom-left {
-        bottom: -45px;
         left: -35px;
+        top: auto;
+        bottom: 30px;
     }
     
     .flower-bottom-right {
-        bottom: -45px;
         right: -35px;
+        top: auto;
+        bottom: 30px;
     }
     
     .flower-img {
@@ -1722,13 +1727,15 @@ html {
     }
     
     .flower-bottom-left {
-        bottom: -40px;
         left: -25px;
+        top: auto;
+        bottom: 20px;
     }
     
     .flower-bottom-right {
-        bottom: -40px;
         right: -25px;
+        top: auto;
+        bottom: 20px;
     }
     
     .flower-img {
