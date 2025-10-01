@@ -55,11 +55,9 @@ function initializeOpenInvitationButton() {
                 // Show navigation elements
                 if (bottomNav) {
                     bottomNav.style.display = 'block';
-                    bottomNav.style.animation = 'slideUp 0.5s ease-out';
                 }
                 if (navIndicator) {
                     navIndicator.style.display = 'block';
-                    navIndicator.style.animation = 'fadeIn 0.5s ease-out';
                 }
                 
                 // Navigate to greeting section
@@ -206,21 +204,24 @@ function initializeScrollHandling() {
     
     // Handle wheel events for page transitions
     mobileContainer.addEventListener('wheel', (e) => {
-        e.preventDefault();
-        
-        if (e.deltaY > 0) {
-            // Scroll down - next section
-            const nextSection = Math.min(currentSection + 1, sections.length - 1);
-            if (nextSection !== currentSection) {
-                showSection(nextSection);
-                updateNavigationSlider(nextSection);
-            }
-        } else {
-            // Scroll up - previous section
-            const prevSection = Math.max(currentSection - 1, 0);
-            if (prevSection !== currentSection) {
-                showSection(prevSection);
-                updateNavigationSlider(prevSection);
+        // Only handle wheel events if not on interactive elements
+        if (!e.target.closest('form, input, select, button, textarea, a')) {
+            e.preventDefault();
+            
+            if (e.deltaY > 0) {
+                // Scroll down - next section
+                const nextSection = Math.min(currentSection + 1, sections.length - 1);
+                if (nextSection !== currentSection) {
+                    showSection(nextSection);
+                    updateNavigationSlider(nextSection);
+                }
+            } else {
+                // Scroll up - previous section
+                const prevSection = Math.max(currentSection - 1, 0);
+                if (prevSection !== currentSection) {
+                    showSection(prevSection);
+                    updateNavigationSlider(prevSection);
+                }
             }
         }
     }, { passive: false });
@@ -453,13 +454,20 @@ window.addEventListener('resize', debounce(() => {
 let touchStartY = 0;
 let touchEndY = 0;
 
-document.addEventListener('touchstart', (e) => {
-    touchStartY = e.changedTouches[0].screenY;
+// Only apply touch events to the mobile container, not to content within sections
+mobileContainer.addEventListener('touchstart', (e) => {
+    // Only handle touch if it's not on interactive elements
+    if (!e.target.closest('form, input, select, button, textarea, a')) {
+        touchStartY = e.changedTouches[0].screenY;
+    }
 }, { passive: true });
 
-document.addEventListener('touchend', (e) => {
-    touchEndY = e.changedTouches[0].screenY;
-    handleSwipe();
+mobileContainer.addEventListener('touchend', (e) => {
+    // Only handle touch if it's not on interactive elements
+    if (!e.target.closest('form, input, select, button, textarea, a')) {
+        touchEndY = e.changedTouches[0].screenY;
+        handleSwipe();
+    }
 }, { passive: true });
 
 function handleSwipe() {
