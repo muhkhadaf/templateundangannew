@@ -2,15 +2,37 @@
 <html lang="id">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=414, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Undangan Pernikahan Dinda & Fahmi</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    screens: {
+                        'xs': '320px',
+                        'sm': '375px',
+                        'md': '414px',
+                        'lg': '768px',
+                        'xl': '1024px',
+                    },
+                    fontFamily: {
+                        'dancing': ['Dancing Script', 'cursive'],
+                        'poppins': ['Poppins', 'sans-serif'],
+                    },
+                    colors: {
+                        'wedding-blue': '#e0f2fe',
+                    }
+                }
+            }
+        }
+    </script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <link href="styles.css" rel="stylesheet">
 </head>
 <body class="bg-wedding-blue font-poppins overflow-x-hidden">
-    <!-- Mobile Container -->
-    <div class="mobile-container">
+    <!-- Responsive Container -->
+    <div class="mobile-container w-full max-w-sm xs:max-w-sm sm:max-w-sm md:max-w-md lg:max-w-md xl:max-w-md mx-auto">
         <!-- Navigation Indicator - Hidden initially -->
         <div class="nav-indicator" id="navIndicator" style="display: none;">
             <div class="nav-dot active" onclick="scrollToSection(0)"></div>
@@ -34,22 +56,22 @@
                 <div class="section-content">
                     <div class="flex flex-col items-center justify-center h-full text-center">
                         <!-- Wedding Title -->
-                        <div class="mb-8">
-                            <p class="text-gray-700 text-sm mb-4 font-light">The Wedding Of</p>
-                            <h1 class="font-dancing font-bold text-4xl mb-2 text-yellow-600">Dinda</h1>
-                            <div class="text-yellow-600 text-2xl mb-2">&</div>
-                            <h1 class="font-dancing font-bold text-4xl mb-6 text-yellow-600">Fahmi</h1>
+                        <div class="mb-6 xs:mb-8 sm:mb-8 md:mb-10">
+                            <p class="text-gray-700 text-xs xs:text-sm sm:text-sm md:text-base mb-3 xs:mb-4 font-light">The Wedding Of</p>
+                            <h1 class="font-dancing font-bold text-3xl xs:text-4xl sm:text-4xl md:text-5xl mb-2 text-yellow-600">Dinda</h1>
+                            <div class="text-yellow-600 text-xl xs:text-2xl sm:text-2xl md:text-3xl mb-2">&</div>
+                            <h1 class="font-dancing font-bold text-3xl xs:text-4xl sm:text-4xl md:text-5xl mb-4 xs:mb-6 text-yellow-600">Fahmi</h1>
                         </div>
                         
                         <!-- Guest Info -->
-                        <div class="bg-transparent rounded-lg p-4 mb-8">
-                            <p class="text-gray-800 text-sm font-semibold">Kepada Yth;</p>
-                <p class="text-gray-800 text-sm font-semibold">Bapak/Ibu/Saudara/i</p>
-                            <p class="text-yellow-400 font-bold text-lg mt-2">Nama Tamu</p>
+                        <div class="bg-transparent rounded-lg p-3 xs:p-4 sm:p-4 md:p-6 mb-6 xs:mb-8 sm:mb-8 md:mb-10">
+                            <p class="text-gray-800 text-xs xs:text-sm sm:text-sm md:text-base font-semibold">Kepada Yth;</p>
+                            <p class="text-gray-800 text-xs xs:text-sm sm:text-sm md:text-base font-semibold">Bapak/Ibu/Saudara/i</p>
+                            <p class="text-yellow-400 font-bold text-base xs:text-lg sm:text-lg md:text-xl mt-2">Nama Tamu</p>
                         </div>
                         
                         <!-- Open Invitation Button -->
-                        <button id="openInvitationBtn" class="bg-yellow-600 hover:bg-yellow-700 text-gray-800 font-semibold py-3 px-8 rounded-full shadow-lg transform transition-all duration-300 hover:scale-105 animate-pulse">
+                        <button id="openInvitationBtn" class="bg-yellow-600 hover:bg-yellow-700 text-gray-800 font-semibold py-2 xs:py-3 sm:py-3 md:py-4 px-6 xs:px-8 sm:px-8 md:px-10 text-sm xs:text-base sm:text-base md:text-lg rounded-full shadow-lg transform transition-all duration-300 hover:scale-105 animate-pulse">
                             Buka Undangan
                         </button>
                     </div>
@@ -290,21 +312,21 @@
                     <div class="blur-container">
                         <h2 class="font-dancing text-yellow-600 text-center mb-6">Konfirmasi Kehadiran</h2>
                         
-                        <div class="bg-transparent rounded-lg p-4">
-                            <p class="text-gray-800 mb-4 text-sm">Mohon konfirmasi kehadiran Anda sebelum tanggal 10 Juni 2024</p>
+                        <div class="bg-transparent rounded-lg p-3 xs:p-4 sm:p-4 md:p-6">
+                            <p class="text-gray-800 mb-3 xs:mb-4 sm:mb-4 md:mb-6 text-xs xs:text-sm sm:text-sm md:text-base">Mohon konfirmasi kehadiran Anda sebelum tanggal 10 Juni 2024</p>
                             
-                            <form class="space-y-3">
-                                <input type="text" placeholder="Nama Lengkap" class="w-full p-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-yellow-400 text-sm">
+                            <form class="space-y-2 xs:space-y-3 sm:space-y-3 md:space-y-4">
+                                <input type="text" placeholder="Nama Lengkap" class="w-full p-2 xs:p-2.5 sm:p-2.5 md:p-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-yellow-400 text-xs xs:text-sm sm:text-sm md:text-base">
                                 
-                                <select class="w-full p-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-yellow-400 text-sm">
+                                <select class="w-full p-2 xs:p-2.5 sm:p-2.5 md:p-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-yellow-400 text-xs xs:text-sm sm:text-sm md:text-base">
                                     <option value="">Konfirmasi Kehadiran</option>
                                     <option value="hadir">Hadir</option>
                                     <option value="tidak-hadir">Tidak Hadir</option>
                                 </select>
                                 
-                                <input type="number" placeholder="Jumlah Tamu" min="1" max="5" class="w-full p-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-yellow-400 text-sm">
+                                <input type="number" placeholder="Jumlah Tamu" min="1" max="5" class="w-full p-2 xs:p-2.5 sm:p-2.5 md:p-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-yellow-400 text-xs xs:text-sm sm:text-sm md:text-base">
                                 
-                                <button type="submit" class="w-full bg-blue-500 text-gray-800 py-2 rounded-lg font-semibold hover:bg-blue-600 transition-colors text-sm">
+                                <button type="submit" class="w-full bg-blue-500 text-gray-800 py-2 xs:py-2.5 sm:py-2.5 md:py-3 rounded-lg font-semibold hover:bg-blue-600 transition-colors text-xs xs:text-sm sm:text-sm md:text-base">
                                     Konfirmasi
                                 </button>
                             </form>
@@ -331,17 +353,17 @@
                     <div class="blur-container">
                         <h2 class="font-dancing text-yellow-600 mb-4 text-center text-xl">Wedding Gift</h2>
                         
-                        <div class="bg-transparent rounded-lg p-4 mb-3">
-                            <div class="text-center mb-4">
-                                <i class="fas fa-gift text-yellow-400 text-2xl mb-2"></i>
-                                <p class="text-gray-800 text-xs leading-relaxed">
+                        <div class="bg-transparent rounded-lg p-3 xs:p-4 sm:p-4 md:p-6 mb-3">
+                            <div class="text-center mb-3 xs:mb-4 sm:mb-4 md:mb-6">
+                                <i class="fas fa-gift text-yellow-400 text-xl xs:text-2xl sm:text-2xl md:text-3xl mb-2"></i>
+                                <p class="text-gray-800 text-xs xs:text-sm sm:text-sm md:text-base leading-relaxed">
                                     Doa restu Anda merupakan karunia yang sangat berarti bagi kami. Dan jika memberi adalah ungkapan tanda kasih Anda, Anda dapat memberi kado secara cashless.
                                 </p>
                             </div>
                             
                             <!-- Transfer Bank -->
-                            <div class="bg-blue-400 bg-opacity-20 rounded-lg p-3 mb-3">
-                                <h3 class="font-semibold text-gray-800 mb-2 text-center text-sm">
+                            <div class="bg-blue-400 bg-opacity-20 rounded-lg p-2 xs:p-3 sm:p-3 md:p-4 mb-3">
+                                <h3 class="font-semibold text-gray-800 mb-2 text-center text-xs xs:text-sm sm:text-sm md:text-base">
                                     <i class="fas fa-university mr-1 text-blue-400"></i>
                                     Transfer Bank
                                 </h3>
@@ -349,9 +371,9 @@
                                     <div class="bg-blue-400 bg-opacity-10 rounded-lg p-2">
                                         <div class="flex justify-between items-center">
                                             <div>
-                                                <p class="font-semibold text-gray-800 text-sm">Bank BCA</p>
+                                                <p class="font-semibold text-gray-800 text-xs xs:text-sm sm:text-sm md:text-base">Bank BCA</p>
                                                 <p class="text-xs text-gray-300">a.n. Dinda Sari Putri</p>
-                                                <p class="font-mono text-sm font-bold text-blue-400">1234567890</p>
+                                                <p class="font-mono text-xs xs:text-sm sm:text-sm md:text-base font-bold text-blue-400">1234567890</p>
                                             </div>
                                             <button onclick="copyToClipboard('1234567890')" class="bg-blue-500 text-gray-800 px-2 py-1 rounded text-xs hover:bg-blue-600 transition-colors">
                                                 <i class="fas fa-copy"></i>
@@ -362,9 +384,9 @@
                                     <div class="bg-blue-400 bg-opacity-10 rounded-lg p-2">
                                         <div class="flex justify-between items-center">
                                             <div>
-                                                <p class="font-semibold text-gray-800 text-sm">Bank Mandiri</p>
+                                                <p class="font-semibold text-gray-800 text-xs xs:text-sm sm:text-sm md:text-base">Bank Mandiri</p>
                                                 <p class="text-xs text-gray-300">a.n. Fahmi Rizki Pratama</p>
-                                                <p class="font-mono text-sm font-bold text-orange-400">0987654321</p>
+                                                <p class="font-mono text-xs xs:text-sm sm:text-sm md:text-base font-bold text-orange-400">0987654321</p>
                                             </div>
                                             <button onclick="copyToClipboard('0987654321')" class="bg-orange-500 text-gray-800 px-2 py-1 rounded text-xs hover:bg-orange-600 transition-colors">
                                                 <i class="fas fa-copy"></i>
@@ -375,8 +397,8 @@
                             </div>
                             
                             <!-- Alamat Fisik -->
-                            <div class="bg-yellow-400 bg-opacity-20 rounded-lg p-3">
-                                <h3 class="font-semibold text-gray-800 mb-2 text-center text-sm">
+                            <div class="bg-yellow-400 bg-opacity-20 rounded-lg p-2 xs:p-3 sm:p-3 md:p-4">
+                                <h3 class="font-semibold text-gray-800 mb-2 text-center text-xs xs:text-sm sm:text-sm md:text-base">
                                     <i class="fas fa-home mr-1 text-yellow-400"></i>
                                     Kirim Kado
                                 </h3>
@@ -392,26 +414,26 @@
                     <div class="blur-container">
                         <h2 class="font-dancing text-yellow-600 mb-6 text-center">Terima Kasih</h2>
                         
-                        <div class="bg-transparent rounded-lg p-6 text-center">
-                            <div class="mb-6">
-                                <i class="fas fa-heart text-yellow-400 text-4xl mb-4"></i>
-                                <h3 class="font-dancing text-blue-400 text-xl mb-4">Wassalamu'alaikum Wr. Wb.</h3>
+                        <div class="bg-transparent rounded-lg p-4 xs:p-5 sm:p-5 md:p-6 text-center">
+                            <div class="mb-4 xs:mb-5 sm:mb-5 md:mb-6">
+                                <i class="fas fa-heart text-yellow-400 text-2xl xs:text-3xl sm:text-3xl md:text-4xl mb-3 xs:mb-4 sm:mb-4 md:mb-4"></i>
+                                <h3 class="font-dancing text-blue-400 text-lg xs:text-xl sm:text-xl md:text-2xl mb-3 xs:mb-4 sm:mb-4 md:mb-4">Wassalamu'alaikum Wr. Wb.</h3>
                             </div>
                             
-                            <div class="space-y-4 text-gray-800">
-                                <p class="leading-relaxed">
+                            <div class="space-y-3 xs:space-y-4 sm:space-y-4 md:space-y-4 text-gray-800">
+                                <p class="leading-relaxed text-xs xs:text-sm sm:text-sm md:text-base">
                                     Merupakan suatu kehormatan dan kebahagiaan bagi kami sekeluarga apabila Bapak/Ibu/Saudara/i berkenan hadir untuk memberikan doa restu kepada kedua mempelai.
                                 </p>
                                 
-                                <p class="leading-relaxed">
+                                <p class="leading-relaxed text-xs xs:text-sm sm:text-sm md:text-base">
                                     Atas kehadiran dan doa restu dari Bapak/Ibu/Saudara/i, kami sekeluarga mengucapkan terima kasih.
                                 </p>
                             </div>
                             
-                            <div class="mt-6 pt-4 border-t border-gray-400">
-                                <p class="text-yellow-400 font-dancing text-lg mb-2">Hormat Kami</p>
-                                <p class="font-semibold text-gray-800">Dinda & Fahmi</p>
-                                <p class="text-sm text-gray-300">Kedua Keluarga Besar</p>
+                            <div class="mt-4 xs:mt-5 sm:mt-5 md:mt-6 pt-3 xs:pt-4 sm:pt-4 md:pt-4 border-t border-gray-400">
+                                <p class="text-yellow-400 font-dancing text-base xs:text-lg sm:text-lg md:text-xl mb-2">Hormat Kami</p>
+                                <p class="font-semibold text-gray-800 text-sm xs:text-base sm:text-base md:text-lg">Dinda & Fahmi</p>
+                                <p class="text-xs xs:text-sm sm:text-sm md:text-base text-gray-300">Kedua Keluarga Besar</p>
                             </div>
                             </div>
                         </div>
